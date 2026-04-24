@@ -1,0 +1,167 @@
+@php
+    $offers = [
+        [
+            'badge' => 'Beginner / Start Here',
+            'badge_classes' => 'bg-emerald-100 text-emerald-800',
+            'article_classes' => 'rounded-2xl border border-emerald-200 bg-white p-6 shadow-soft',
+            'title' => 'Starter Guide',
+            'for_label' => 'first-time visitors who want a low-pressure start',
+            'description' => 'A simple resource to understand the first practical steps, key questions to ask, and how to choose an offer that matches your current season.',
+            'outcome_label' => 'More clarity and less confusion about where to begin.',
+            'format_label' => 'PDF guide and checklist.',
+            'price_label' => 'Free or lead-magnet placeholder.',
+            'payment_label' => 'WhatsApp delivery / email follow-up.',
+            'primary_text' => 'Learn More',
+            'primary_classes' => 'inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-panel',
+            'secondary_text' => 'Chat on WhatsApp',
+            'secondary_classes' => 'inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50',
+            'secondary_message' => 'Habari Paul, naomba Starter Guide ili nianze kuelewa hatua za kwanza.',
+            'modal' => [
+                'name' => 'Starter Guide',
+                'price' => 'Free',
+                'format' => 'PDF guide + checklist',
+                'for' => 'Beginners who want clarity without pressure',
+                'outcome' => 'Get a calm starting point and choose your next step with confidence',
+                'payment_link' => config('brand.payment.links.starter_guide'),
+                'payment_type' => 'whatsapp',
+                'payment_methods' => 'WhatsApp delivery|Email delivery',
+                'whatsapp_message' => 'Habari Paul, naomba Starter Guide yako kama hatua ya kuanza.',
+                'next_steps' => 'After you request it, the guide can be shared directly and used as the first follow-up touchpoint.',
+            ],
+        ],
+        [
+            'badge' => 'Low-Ticket Digital Offer',
+            'badge_classes' => 'bg-amber-100 text-amber-900',
+            'article_classes' => 'rounded-2xl border border-slate-200 bg-white p-6 shadow-soft',
+            'title' => 'Part-Time Business Starter Kit',
+            'for_label' => 'people ready to stop guessing and start organizing',
+            'description' => 'A practical digital resource covering basic positioning, simple action planning, and beginner implementation steps for part-time business building.',
+            'outcome_label' => 'A more organized starting plan and less scattered effort.',
+            'format_label' => 'Ebook, worksheet, and action checklist.',
+            'price_label' => 'TZS 29,000',
+            'payment_label' => 'Mobile money, card, or bank transfer compatible.',
+            'primary_text' => 'Buy Now',
+            'primary_classes' => 'inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-accent px-5 py-3 text-sm font-semibold text-ink transition hover:bg-amber-300',
+            'secondary_text' => 'Need Help First?',
+            'secondary_classes' => 'inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50',
+            'secondary_message' => 'Habari Paul, nimeona Part-Time Business Starter Kit. Naweza kuuliza swali kabla sijalipa?',
+            'modal' => [
+                'name' => 'Part-Time Business Starter Kit',
+                'price' => 'TZS 29,000',
+                'format' => 'Ebook + worksheet bundle',
+                'for' => 'Busy people who want a clearer side-business roadmap',
+                'outcome' => 'Create a stronger foundation and reduce beginner confusion',
+                'payment_link' => config('brand.payment.links.starter_kit'),
+                'payment_type' => 'hosted',
+                'payment_methods' => 'M-Pesa|Tigo Pesa|Airtel Money|Halo Pesa|Card|Bank Transfer',
+                'whatsapp_message' => 'Habari Paul, ningependa kununua Part-Time Business Starter Kit.',
+                'next_steps' => 'After payment verification, the digital product can be delivered automatically or confirmed through WhatsApp.',
+            ],
+        ],
+        [
+            'badge' => 'Workshop / Training',
+            'badge_classes' => 'bg-blue-100 text-blue-900',
+            'article_classes' => 'rounded-2xl border border-slate-200 bg-white p-6 shadow-soft',
+            'title' => 'Weekend Growth Workshop',
+            'for_label' => 'people who want live direction and Q&amp;A',
+            'description' => 'A focused training format for people who prefer real-time guidance, practical teaching, and the chance to ask questions before taking bigger steps.',
+            'outcome_label' => 'Better understanding, stronger direction, and clearer confidence to act.',
+            'format_label' => 'Workshop, webinar, or recorded training.',
+            'price_label' => 'TZS 79,000',
+            'payment_label' => 'Reserve with mobile money or hosted checkout.',
+            'primary_text' => 'Reserve Your Spot',
+            'primary_classes' => 'inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-panel',
+            'secondary_text' => 'Chat on WhatsApp',
+            'secondary_classes' => 'inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50',
+            'secondary_message' => 'Habari Paul, naomba maelezo zaidi kuhusu Weekend Growth Workshop.',
+            'modal' => [
+                'name' => 'Weekend Growth Workshop',
+                'price' => 'TZS 79,000',
+                'format' => 'Live workshop / webinar',
+                'for' => 'People who learn best with guided teaching and Q&amp;A',
+                'outcome' => 'Get practical understanding and a stronger plan to move forward',
+                'payment_link' => config('brand.payment.links.workshop'),
+                'payment_type' => 'reserve',
+                'payment_methods' => 'M-Pesa|Airtel Money|Card|Bank Transfer',
+                'whatsapp_message' => 'Habari Paul, ningependa kuhifadhi nafasi kwa Weekend Growth Workshop.',
+                'next_steps' => 'After reservation or payment, attendees receive event details, joining instructions, and support on the next step.',
+            ],
+        ],
+        [
+            'badge' => 'Coaching Package',
+            'badge_classes' => 'bg-violet-100 text-violet-900',
+            'article_classes' => 'rounded-2xl border border-slate-200 bg-white p-6 shadow-soft',
+            'title' => 'Part-Time Business Coaching',
+            'for_label' => 'people who want guided implementation and accountability',
+            'description' => 'A more personal support path for people who want closer guidance, practical follow-up, and help adapting the process to their own schedule and context.',
+            'outcome_label' => 'Stronger consistency, better clarity, and a more supported implementation journey.',
+            'format_label' => 'Coaching sessions, check-ins, and WhatsApp follow-up.',
+            'price_label' => 'TZS 180,000',
+            'payment_label' => 'Mobile money, card, and assisted checkout supported.',
+            'primary_text' => 'Pay Now',
+            'primary_classes' => 'inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-accent px-5 py-3 text-sm font-semibold text-ink transition hover:bg-amber-300',
+            'secondary_text' => 'Chat First',
+            'secondary_classes' => 'inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50',
+            'secondary_message' => 'Habari Paul, naomba nichati kabla ya kujiunga na Part-Time Business Coaching.',
+            'modal' => [
+                'name' => 'Part-Time Business Coaching',
+                'price' => 'TZS 180,000',
+                'format' => 'Coaching sessions + WhatsApp support',
+                'for' => 'People who need personal support and accountability',
+                'outcome' => 'Start with more guidance and continue with better consistency',
+                'payment_link' => config('brand.payment.links.coaching'),
+                'payment_type' => 'hosted',
+                'payment_methods' => 'M-Pesa|Tigo Pesa|Airtel Money|Card|Bank Transfer',
+                'whatsapp_message' => 'Habari Paul, ningependa maelezo kuhusu Part-Time Business Coaching.',
+                'next_steps' => 'After checkout or confirmation, onboarding details, scheduling steps, and WhatsApp support can begin.',
+            ],
+        ],
+        [
+            'badge' => 'Premium / Application',
+            'badge_classes' => 'bg-rose-100 text-rose-900',
+            'article_classes' => 'rounded-2xl border border-slate-200 bg-white p-6 shadow-soft',
+            'title' => 'Private Mentorship Intake',
+            'for_label' => 'serious clients who want direct strategic support',
+            'description' => 'A premium mentorship path for people who want closer access, personal direction, and a more tailored progression based on their goals and readiness.',
+            'outcome_label' => 'Deeper support, more tailored guidance, and a higher-touch relationship.',
+            'format_label' => 'Application, screening call, and premium support path.',
+            'price_label' => 'Application only',
+            'payment_label' => 'Discuss on WhatsApp or call before payment.',
+            'primary_text' => 'Apply Now',
+            'primary_classes' => 'inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-panel',
+            'secondary_text' => 'Book by Call',
+            'secondary_classes' => 'inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50',
+            'secondary_type' => 'call',
+            'modal' => [
+                'name' => 'Private Mentorship Intake',
+                'price' => 'Application Only',
+                'format' => 'Application + strategy call',
+                'for' => 'Clients seeking premium direct guidance',
+                'outcome' => 'Understand fit, expectations, and whether premium mentorship is the right next step',
+                'payment_link' => config('brand.payment.links.private_mentorship'),
+                'payment_type' => 'apply',
+                'payment_methods' => 'WhatsApp consultation|Call booking',
+                'whatsapp_message' => 'Habari Paul, ningependa kuomba nafasi kwenye Private Mentorship Intake.',
+                'next_steps' => 'You apply first, receive personal direction, and confirm fit before any payment is requested.',
+            ],
+        ],
+    ];
+@endphp
+
+<section id="offers" class="section-anchor mx-auto max-w-6xl px-4 py-8 md:py-14">
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Products &amp; Offers</p>
+      <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight text-ink">A mobile-first offer catalog with clear next steps</h2>
+    </div>
+    <p class="max-w-xl text-sm leading-7 text-slate-600">
+      Beginner offers, mid-tier training, and premium mentorship are visually separated so users can self-select quickly.
+    </p>
+  </div>
+
+  <div class="mt-6 grid gap-5 xl:grid-cols-3">
+    @foreach ($offers as $offer)
+      <x-site.offer-card :offer="$offer" />
+    @endforeach
+  </div>
+</section>
