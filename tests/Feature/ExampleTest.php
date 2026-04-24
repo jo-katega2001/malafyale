@@ -13,8 +13,19 @@ class ExampleTest extends TestCase
         $response
             ->assertOk()
             ->assertSee('Paul Mwaikenda')
+            ->assertSee('/portal/login')
             ->assertSee('Build extra income without walking away from the work that already feeds you.')
             ->assertSee('90 Days of Income Generating Activities');
+    }
+
+    public function test_the_portal_login_page_renders(): void
+    {
+        $response = $this->get('/portal/login');
+
+        $response
+            ->assertOk()
+            ->assertSee('Portal Login')
+            ->assertSee('admin@mwalafyale.com');
     }
 
     public function test_the_swahili_homepage_renders_the_localized_brand_experience(): void

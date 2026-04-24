@@ -532,6 +532,12 @@
               {{ $page['header']['language_switch'] }}
             </a>
             <a
+              href="{{ route('portal.login') }}"
+              class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
+            >
+              Portal
+            </a>
+            <a
               href="#"
               data-call-link
               class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
@@ -568,6 +574,7 @@
             @foreach ($page['navigation'] as $item)
               <a href="{{ $item['href'] }}" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">{{ $item['label'] }}</a>
             @endforeach
+            <a href="{{ route('portal.login') }}" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">Portal Login</a>
             <a
               href="#"
               data-wa-link

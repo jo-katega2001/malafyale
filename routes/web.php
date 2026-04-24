@@ -49,6 +49,8 @@ foreach ($sections as $name => $anchor) {
 }
 
 // Auth routes
+Route::redirect('/portal', '/portal/login')->name('portal');
+Route::get('/portal/login', [LoginController::class, 'showLoginForm'])->name('portal.login');
 Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login.submit');
 Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');

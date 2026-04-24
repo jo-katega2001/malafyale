@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Login — Paul Mwaikenda</title>
+    <title>Portal Login — Paul Mwaikenda</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23081423'/><text x='50' y='68' font-family='sans-serif' font-size='42' font-weight='bold' fill='%23c7964d' text-anchor='middle'>PM</text></svg>">
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
     <div class="w-full max-w-md px-6">
         <div class="text-center mb-8">
             <div class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent text-2xl font-bold text-ink mx-auto">PM</div>
-            <h1 class="mt-4 text-2xl font-semibold text-white tracking-tight">Admin Login</h1>
+            <h1 class="mt-4 text-2xl font-semibold text-white tracking-tight">Portal Login</h1>
             <p class="mt-2 text-sm text-slate-400">Sign in to manage leads and view analytics</p>
         </div>
 
