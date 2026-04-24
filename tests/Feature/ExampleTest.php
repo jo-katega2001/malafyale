@@ -13,6 +13,7 @@ class ExampleTest extends TestCase
         $response
             ->assertOk()
             ->assertSee('Paul Mwaikenda')
+            ->assertSee('+255 789 412 904')
             ->assertSee('/portal/login')
             ->assertSee('Build extra income without walking away from the work that already feeds you.')
             ->assertSee('90 Days of Income Generating Activities');
@@ -28,7 +29,8 @@ class ExampleTest extends TestCase
                 'id="lead-capture"',
                 'id="quick-actions"',
                 'id="intro-video"',
-            ], false);
+            ], false)
+            ->assertDontSee('md:-mt-10');
     }
 
     public function test_the_portal_login_page_renders(): void

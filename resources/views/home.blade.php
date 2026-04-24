@@ -591,7 +591,7 @@
     </header>
 
     <main id="main" class="pb-12">
-      <section class="hero-surface py-8 sm:py-10 lg:flex lg:min-h-[calc(100vh-4rem)] lg:items-center lg:py-0">
+      <section class="hero-surface py-8 sm:py-10 lg:py-16 xl:py-20">
         <div class="hero-grid relative mx-auto w-full max-w-6xl px-4">
           <div class="grid items-center gap-6 lg:grid-cols-[1.02fr_0.98fr] lg:gap-12">
             <div class="relative z-10 order-2 flex flex-col space-y-5 lg:order-1 lg:space-y-6">
@@ -601,7 +601,7 @@
                 </span>
 
                 <div class="motion-item space-y-2 lg:space-y-3" data-motion="hero" style="--motion-index: 1">
-                  <h1 class="font-display text-[2.1rem] font-semibold leading-[1.04] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+                  <h1 class="font-display text-[2.1rem] font-semibold leading-[1.04] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[4.5rem]">
                     {{ $page['hero']['title'] }}
                   </h1>
                   <p class="max-w-2xl text-base leading-8 text-slate-200 lg:text-lg">
@@ -682,7 +682,7 @@
         </div>
       </section>
 
-      <section id="lead-capture" class="content-section section-anchor relative z-20 mx-auto max-w-6xl px-4 py-8 md:-mt-10 md:pb-12 md:pt-0">
+      <section id="lead-capture" class="content-section section-anchor relative z-20 mx-auto max-w-6xl px-4 py-10 md:py-14">
         <div class="motion-item section-card overflow-hidden rounded-[1.6rem] md:rounded-[2rem]" data-motion="cta" style="--motion-index: 0">
           <div class="grid gap-0 lg:grid-cols-[0.88fr_1.12fr]">
             <div class="bg-ink p-5 text-white md:p-8">

@@ -5,8 +5,8 @@ return [
     'instagram_url' => env('BRAND_INSTAGRAM_URL', 'https://www.instagram.com/paulmwaikenda/'),
 
     'contact' => [
-        'whatsapp_number' => env('BRAND_WHATSAPP_NUMBER', ''),
-        'phone_number' => env('BRAND_PHONE_NUMBER', ''),
+        'whatsapp_number' => env('BRAND_WHATSAPP_NUMBER') ?: '+255 789 412 904',
+        'phone_number' => env('BRAND_PHONE_NUMBER') ?: '+255 789 412 904',
     ],
 
     'payment' => [
