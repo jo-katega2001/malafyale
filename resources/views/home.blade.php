@@ -280,7 +280,8 @@
       .video-card img {
         width: 100%;
         aspect-ratio: 16 / 9;
-        object-fit: contain;
+        object-fit: cover;
+        object-position: center;
         background: #081423;
         display: block;
       }
@@ -590,42 +591,42 @@
     </header>
 
     <main id="main" class="pb-12">
-      <section class="hero-surface flex min-h-[calc(100vh-4rem)] flex-col justify-center py-4 lg:h-[calc(100vh-4rem)] lg:min-h-0 lg:py-0">
-        <div class="hero-grid relative mx-auto w-full max-w-6xl px-4 py-4 lg:py-0">
-          <div class="grid items-center gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
-            <div class="relative z-10 flex flex-col space-y-4 lg:space-y-6">
-              <div class="space-y-3 lg:space-y-5">
+      <section class="hero-surface py-8 sm:py-10 lg:flex lg:min-h-[calc(100vh-4rem)] lg:items-center lg:py-0">
+        <div class="hero-grid relative mx-auto w-full max-w-6xl px-4">
+          <div class="grid items-center gap-6 lg:grid-cols-[1.02fr_0.98fr] lg:gap-12">
+            <div class="relative z-10 order-2 flex flex-col space-y-5 lg:order-1 lg:space-y-6">
+              <div class="space-y-4 lg:space-y-5">
                 <span class="motion-item inline-flex items-center rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-accent lg:px-3.5 lg:py-1.5 lg:text-xs" data-motion="hero" style="--motion-index: 0">
                   {{ $page['hero']['eyebrow'] }}
                 </span>
 
                 <div class="motion-item space-y-2 lg:space-y-3" data-motion="hero" style="--motion-index: 1">
-                  <h1 class="font-display text-2xl font-semibold leading-[1.1] tracking-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
+                  <h1 class="font-display text-[2.1rem] font-semibold leading-[1.04] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                     {{ $page['hero']['title'] }}
                   </h1>
-                  <p class="max-w-lg text-xs leading-relaxed text-slate-200 sm:text-sm lg:text-base">
+                  <p class="max-w-2xl text-base leading-8 text-slate-200 lg:text-lg">
                     {{ $page['hero']['description'] }}
                   </p>
                 </div>
 
-                <div class="motion-item flex flex-wrap gap-2 lg:gap-3" data-motion="hero" style="--motion-index: 2">
+                <div class="motion-item grid gap-2 sm:flex sm:flex-wrap lg:gap-3" data-motion="hero" style="--motion-index: 2">
                   <a
                     href="#"
                     data-wa-link
                     data-message="{{ $page['hero']['primary_message'] }}"
-                    class="button-sheen inline-flex min-h-[40px] items-center justify-center rounded-xl bg-whatsapp px-4 py-2 text-xs font-semibold text-white shadow-lg transition hover:bg-green-500 lg:min-h-[48px] lg:rounded-2xl lg:px-5 lg:py-2.5 lg:text-sm"
+                    class="button-sheen inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-whatsapp px-5 py-3 text-base font-semibold text-white shadow-lg transition hover:bg-green-500 sm:w-auto"
                   >
                     {{ $page['common']['start_whatsapp'] }}
                   </a>
                   <a
                     href="#lead-capture"
-                    class="button-sheen inline-flex min-h-[40px] items-center justify-center rounded-xl bg-accent px-4 py-2 text-xs font-semibold text-ink shadow-lg transition hover:bg-accent/90 lg:min-h-[48px] lg:rounded-2xl lg:px-5 lg:py-2.5 lg:text-sm"
+                    class="button-sheen inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-accent px-5 py-3 text-base font-semibold text-ink shadow-lg transition hover:bg-accent/90 sm:w-auto"
                   >
                     {{ $page['hero']['request_callback'] }}
                   </a>
                   <a
                     href="#offers"
-                    class="button-sheen inline-flex min-h-[40px] items-center justify-center rounded-xl border border-white/15 bg-white/8 px-4 py-2 text-xs font-semibold text-white backdrop-blur transition hover:bg-white/12 lg:min-h-[48px] lg:rounded-2xl lg:px-5 lg:py-2.5 lg:text-sm"
+                    class="button-sheen inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-white/15 bg-white/8 px-5 py-3 text-base font-semibold text-white backdrop-blur transition hover:bg-white/12 sm:w-auto"
                   >
                     {{ $page['common']['view_offers'] }}
                   </a>
@@ -637,72 +638,112 @@
                   @endforeach
                 </div>
               </div>
-
-              <div class="motion-item group relative z-10 w-full max-w-xs lg:max-w-md" data-motion="hero" style="--motion-index: 4">
-                <div class="section-card-dark overflow-hidden rounded-[1rem] p-1 lg:rounded-[1.4rem] lg:p-1.5">
-                  <div class="relative overflow-hidden rounded-[0.8rem] bg-ink lg:rounded-[1.1rem]">
-                    <video
-                      id="heroMainVideo"
-                      class="block aspect-video w-full bg-ink"
-                      controls
-                      playsinline
-                      preload="metadata"
-                      poster="{{ asset('media/paul-mwaikenda/images/thumb-if-i-can-do-it.png') }}"
-                    >
-                      <source src="{{ asset('media/paul-mwaikenda/videos/if-i-can-do-it-you-can-too.mp4') }}" type="video/mp4">
-                    </video>
-                    <div id="heroPlayOverlay" class="absolute inset-0 flex items-center justify-center bg-ink/20 transition-opacity duration-300 group-hover:bg-ink/10">
-                      <button
-                        type="button"
-                        id="heroPlayButton"
-                        class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-accent text-ink shadow-lg transition hover:scale-110 lg:h-11 lg:w-11"
-                        aria-label="{{ $page['video_gallery']['ask_label'] }}"
-                      >
-                        <svg class="ml-0.5 h-3 w-3 lg:h-3.5 lg:w-3.5" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
-                          <path d="M2 1.5v9l8-4.5z"></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="mt-1.5 flex items-center justify-between px-1 lg:mt-2">
-                  <div class="flex items-center gap-1.5">
-                    <span class="flex h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
-                    <p class="text-[10px] font-medium text-white/90 lg:text-xs">{{ $page['hero']['video_title'] }}</p>
-                  </div>
-                  <span class="text-[8px] font-bold uppercase tracking-widest text-accent/80 lg:text-[9px]">{{ $page['video_gallery']['eyebrow'] }}</span>
-                </div>
-              </div>
             </div>
 
-            <div class="relative z-10 flex justify-center lg:justify-end">
-              <figure class="motion-item group relative w-full max-w-[200px] sm:max-w-xs lg:max-w-[320px]" data-motion="hero" style="--motion-index: 2">
-                <div class="absolute -inset-1 rounded-[2rem] bg-gradient-to-tr from-accent/20 to-transparent blur-xl opacity-40"></div>
-                <div class="section-card-dark overflow-hidden rounded-[1.4rem] p-1.5 shadow-2xl lg:rounded-[1.8rem] lg:p-2">
-                  <div class="overflow-hidden rounded-[1.1rem] border border-white/10 bg-white/5 lg:rounded-[1.4rem]">
+            <div class="relative z-10 order-1 lg:order-2">
+              <figure class="motion-item group relative mx-auto w-full max-w-sm lg:max-w-[25rem]" data-motion="hero" style="--motion-index: 1">
+                <div class="absolute -inset-1 rounded-[2rem] bg-gradient-to-tr from-accent/20 to-whatsapp/10 blur-xl opacity-45"></div>
+                <div class="section-card-dark overflow-hidden rounded-[1.6rem] p-2 shadow-2xl lg:rounded-[2rem]">
+                  <div class="grid grid-cols-[7.5rem_1fr] items-stretch gap-3 overflow-hidden rounded-[1.2rem] border border-white/10 bg-white/5 sm:grid-cols-1 lg:rounded-[1.5rem]">
                     <img
                       src="{{ asset('media/paul-mwaikenda/images/profile-picture.png') }}"
                       alt="{{ $page['hero']['profile_name'] }}"
-                      class="h-auto w-full transition-transform duration-700 group-hover:scale-105"
-                      style="aspect-ratio: 4 / 5; object-fit: cover; object-position: center 15%;"
+                      class="h-full min-h-[10rem] w-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105 sm:aspect-[4/5] sm:h-auto"
                       loading="eager"
                       width="2048"
                       height="3072"
                     >
+                    <figcaption class="flex flex-col justify-between p-4 text-white sm:hidden">
+                      <div>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-accent">{{ $page['about']['eyebrow'] }}</p>
+                        <p class="mt-2 font-display text-xl font-semibold leading-tight">{{ $page['hero']['profile_name'] }}</p>
+                        <p class="mt-2 text-sm leading-6 text-white/70">{{ $page['hero']['profile_role'] }}</p>
+                      </div>
+                      <a href="#lead-capture" class="mt-4 inline-flex min-h-[44px] items-center justify-center rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-ink">
+                        {{ $page['hero']['request_callback'] }}
+                      </a>
+                    </figcaption>
                   </div>
-                  <figcaption class="mt-2 flex items-center justify-between px-1 lg:mt-3">
+                  <figcaption class="mt-3 hidden items-center justify-between px-1 sm:flex lg:mt-4">
                     <div>
-                      <p class="font-display text-sm font-semibold text-white lg:text-lg">{{ $page['hero']['profile_name'] }}</p>
-                      <p class="mt-0.5 text-[9px] text-white/60 lg:text-[10px]">{{ $page['hero']['profile_role'] }}</p>
+                      <p class="font-display text-lg font-semibold text-white lg:text-2xl">{{ $page['hero']['profile_name'] }}</p>
+                      <p class="mt-1 text-xs text-white/60 lg:text-sm">{{ $page['hero']['profile_role'] }}</p>
                     </div>
-                    <div class="flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/5 lg:h-7 lg:w-7">
-                      <svg class="h-2.5 w-2.5 text-accent lg:h-3.5 lg:w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5">
+                      <svg class="h-4 w-4 text-accent" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                       </svg>
                     </div>
                   </figcaption>
                 </div>
               </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lead-capture" class="content-section section-anchor relative z-20 mx-auto max-w-6xl px-4 py-8 md:-mt-10 md:pb-12 md:pt-0">
+        <div class="motion-item section-card overflow-hidden rounded-[1.6rem] md:rounded-[2rem]" data-motion="cta" style="--motion-index: 0">
+          <div class="grid gap-0 lg:grid-cols-[0.88fr_1.12fr]">
+            <div class="bg-ink p-5 text-white md:p-8">
+              <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/55">{{ $page['lead_form']['eyebrow'] }}</p>
+              <h2 class="mt-3 font-display text-2xl font-semibold tracking-tight md:text-4xl">{{ $page['lead_form']['title'] }}</h2>
+              <p class="mt-4 text-sm leading-7 text-slate-200 md:text-base">{{ $page['lead_form']['description'] }}</p>
+
+              <div class="mt-5 grid gap-2">
+                @foreach (array_slice($page['hero']['tags'], 0, 3) as $tag)
+                  <span class="inline-flex rounded-full border border-white/12 bg-white/8 px-3 py-2 text-xs font-semibold text-white/80">{{ $tag }}</span>
+                @endforeach
+              </div>
+            </div>
+
+            <div class="p-4 md:p-6 lg:p-8">
+              <form id="leadForm" class="grid gap-4 sm:grid-cols-2" novalidate>
+                @foreach ($leadFields as $field)
+                  <div class="{{ $field['name'] === 'instagram' ? 'sm:col-span-2' : '' }} rounded-[1.1rem] border border-slate-200 bg-white px-4 py-3 shadow-sm">
+                    <div class="mb-1.5 flex items-center justify-between gap-3">
+                      <label for="{{ $field['id'] }}" class="block text-sm font-semibold text-ink">{{ $field['label'] }}</label>
+                      <span class="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-500">
+                        {{ $field['required'] ? $page['lead_form']['required'] : $page['lead_form']['optional'] }}
+                      </span>
+                    </div>
+                    <input
+                      id="{{ $field['id'] }}"
+                      name="{{ $field['name'] }}"
+                      type="{{ $field['type'] }}"
+                      autocomplete="{{ $field['autocomplete'] }}"
+                      class="field-input"
+                      placeholder="{{ $field['placeholder'] }}"
+                      @if ($field['required']) required @endif
+                    >
+                    <p id="{{ $field['id'] }}Error" class="mt-2 hidden text-sm text-red-600">{{ $field['error'] }}</p>
+                  </div>
+                @endforeach
+
+                <div class="sm:col-span-2">
+                  <button
+                    type="submit"
+                    id="leadSubmit"
+                    class="button-sheen inline-flex min-h-[54px] w-full items-center justify-center rounded-2xl bg-ink px-5 py-3 text-base font-semibold text-white transition hover:bg-panel"
+                  >
+                    {{ __('messages.lead.submit_label') }}
+                  </button>
+
+                  <p class="mt-4 text-center text-sm leading-7 text-slate-600">
+                    {{ $page['lead_form']['helper'] }}
+                    <a
+                      href="#"
+                      data-wa-link
+                      data-message="{{ $page['common']['default_whatsapp_message'] }}"
+                      class="font-semibold text-ink underline underline-offset-4"
+                    >
+                      {{ $page['lead_form']['after_copy'] }}
+                    </a>
+                  </p>
+
+                  <div id="leadState" class="mt-5 hidden rounded-[1.4rem] border px-5 py-4 text-sm leading-7" aria-live="polite"></div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -737,7 +778,7 @@
                 data-payment-methods="{{ implode('|', $linkedOffer['payment_methods']) }}"
                 data-whatsapp-message="{{ $linkedOffer['secondary_message'] }}"
                 data-next-steps="{{ $linkedOffer['next_steps'] }}"
-                class="quick-action-card motion-item section-card flex min-h-[15rem] flex-col justify-between rounded-[1.6rem] p-5 text-left"
+                class="quick-action-card motion-item section-card flex min-h-[11rem] flex-col justify-between rounded-[1.6rem] p-5 text-left md:min-h-[15rem]"
                 data-motion="quick-action"
                 style="--motion-index: {{ $loop->index }}"
               >
@@ -756,7 +797,7 @@
                 href="#"
                 data-wa-link
                 data-message="{{ $item['message'] }}"
-                class="quick-action-card motion-item section-card flex min-h-[15rem] flex-col justify-between rounded-[1.6rem] p-5 text-left"
+                class="quick-action-card motion-item section-card flex min-h-[11rem] flex-col justify-between rounded-[1.6rem] p-5 text-left md:min-h-[15rem]"
                 data-motion="quick-action"
                 style="--motion-index: {{ $loop->index }}"
               >
@@ -773,7 +814,7 @@
             @else
               <a
                 href="{{ $item['href'] }}"
-                class="quick-action-card motion-item section-card flex min-h-[15rem] flex-col justify-between rounded-[1.6rem] p-5 text-left"
+                class="quick-action-card motion-item section-card flex min-h-[11rem] flex-col justify-between rounded-[1.6rem] p-5 text-left md:min-h-[15rem]"
                 data-motion="quick-action"
                 style="--motion-index: {{ $loop->index }}"
               >
@@ -1095,63 +1136,6 @@
               <a href="#offers" class="inline-flex min-h-[50px] items-center justify-center rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10">{{ $page['common']['view_offers'] }}</a>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section id="lead-capture" class="content-section section-anchor mx-auto max-w-4xl px-4 py-8 md:py-12">
-        <div class="motion-item section-card rounded-[2rem] p-6 md:p-8" data-motion="cta" style="--motion-index: 0">
-          <div class="text-center">
-            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">{{ $page['lead_form']['eyebrow'] }}</p>
-            <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">{{ $page['lead_form']['title'] }}</h2>
-            <p class="mt-4 mx-auto max-w-2xl text-sm leading-7 text-slate-600 md:text-base">{{ $page['lead_form']['description'] }}</p>
-          </div>
-
-          <form id="leadForm" class="mt-8 space-y-5" novalidate>
-            @foreach ($leadFields as $field)
-              <div class="overflow-hidden rounded-[1.4rem] border border-slate-200 bg-white shadow-sm">
-                <div class="flex items-center justify-between gap-3 bg-ink px-5 py-3.5">
-                  <label for="{{ $field['id'] }}" class="block text-sm font-semibold text-white sm:text-base">{{ $field['label'] }}</label>
-                  <span class="inline-flex items-center rounded-full bg-white/12 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/70">
-                    {{ $field['required'] ? $page['lead_form']['required'] : $page['lead_form']['optional'] }}
-                  </span>
-                </div>
-                <div class="px-5 py-4">
-                  <input
-                    id="{{ $field['id'] }}"
-                    name="{{ $field['name'] }}"
-                    type="{{ $field['type'] }}"
-                    autocomplete="{{ $field['autocomplete'] }}"
-                    class="field-input"
-                    placeholder="{{ $field['placeholder'] }}"
-                    @if ($field['required']) required @endif
-                  >
-                  <p id="{{ $field['id'] }}Error" class="mt-2 hidden text-sm text-red-600">{{ $field['error'] }}</p>
-                </div>
-              </div>
-            @endforeach
-
-            <button
-              type="submit"
-              id="leadSubmit"
-              class="button-sheen inline-flex min-h-[54px] w-full items-center justify-center rounded-full bg-ink px-5 py-3 text-base font-semibold text-white transition hover:bg-panel"
-            >
-              {{ __('messages.lead.submit_label') }}
-            </button>
-
-            <p class="text-center text-sm leading-7 text-slate-600">
-              {{ $page['lead_form']['helper'] }}
-              <a
-                href="#"
-                data-wa-link
-                data-message="{{ $page['common']['default_whatsapp_message'] }}"
-                class="font-semibold text-ink underline underline-offset-4"
-              >
-                {{ $page['lead_form']['after_copy'] }}
-              </a>
-            </p>
-          </form>
-
-          <div id="leadState" class="mt-5 hidden rounded-[1.4rem] border px-5 py-4 text-sm leading-7" aria-live="polite"></div>
         </div>
       </section>
 

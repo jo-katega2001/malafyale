@@ -18,6 +18,19 @@ class ExampleTest extends TestCase
             ->assertSee('90 Days of Income Generating Activities');
     }
 
+    public function test_the_homepage_places_visitor_capture_before_supporting_sections(): void
+    {
+        $response = $this->get('/');
+
+        $response
+            ->assertOk()
+            ->assertSeeInOrder([
+                'id="lead-capture"',
+                'id="quick-actions"',
+                'id="intro-video"',
+            ], false);
+    }
+
     public function test_the_portal_login_page_renders(): void
     {
         $response = $this->get('/portal/login');
