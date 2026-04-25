@@ -83,20 +83,22 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
 
-        foreach ([
-            '/request-callback',
-            '/quick-actions',
-            '/about',
-            '/audience',
-            '/program',
-            '/offers',
-            '/payments',
-            '/videos',
-            '/faq',
-            '/start',
-        ] as $path) {
-            $response->assertSee('href="http://localhost' . $path . '"', false);
-        }
+        $response
+            ->assertSee('aria-label="Section navigation"', false)
+            ->assertSee('section-rail-scroll', false)
+            ->assertSeeInOrder([
+                'aria-label="Section navigation"',
+                'href="http://localhost/request-callback"',
+                'href="http://localhost/quick-actions"',
+                'href="http://localhost/start"',
+                'href="http://localhost/about"',
+                'href="http://localhost/audience"',
+                'href="http://localhost/videos"',
+                'href="http://localhost/faq"',
+                'href="http://localhost/program"',
+                'href="http://localhost/offers"',
+                'href="http://localhost/payments"',
+            ], false);
     }
 
     public function test_section_tracking_cookie_is_hardened(): void

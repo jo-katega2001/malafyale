@@ -7,6 +7,11 @@
     $sectionAnchor = $sectionAnchor ?? null;
     $sectionRoute = fn (string $name) => route($isSw ? 'section.sw.' . $name : 'section.' . $name);
     $guidedNavigation = $page['guided_navigation'];
+    $sectionRailLinks = collect($guidedNavigation['groups'])
+        ->flatMap(fn (array $group) => $group['items'])
+        ->unique('href')
+        ->values()
+        ->all();
     $sectionUrls = [
         '#lead-capture' => $sectionRoute('request-callback'),
         '#quick-actions' => $sectionRoute('quick-actions'),
@@ -210,6 +215,14 @@
 
       .section-anchor {
         scroll-margin-top: 5.5rem;
+      }
+
+      .section-rail-scroll {
+        scrollbar-width: none;
+      }
+
+      .section-rail-scroll::-webkit-scrollbar {
+        display: none;
       }
 
       .content-section {
@@ -636,6 +649,23 @@
             </svg>
           </button>
         </div>
+
+        <nav class="-mx-4 border-t border-white/10 py-2" aria-label="Section navigation">
+          <div class="section-rail-scroll flex gap-2 overflow-x-auto px-4 pb-1 md:flex-wrap md:overflow-visible">
+            @foreach ($sectionRailLinks as $item)
+              @php
+                  $isActiveSection = $sectionAnchor === ltrim($item['href'], '#');
+              @endphp
+
+              <a
+                href="{{ $sectionHref($item['href']) }}"
+                class="{{ $isActiveSection ? 'border-accent/70 bg-accent text-ink' : 'border-white/10 bg-white/[0.06] text-white/80 hover:border-white/25 hover:bg-white/10 hover:text-white' }} shrink-0 rounded-full border px-3 py-2 text-[11px] font-bold leading-none transition md:text-xs"
+              >
+                {{ $item['label'] }}
+              </a>
+            @endforeach
+          </div>
+        </nav>
 
         <div id="mobileMenu" class="hidden border-t border-white/10 py-4 xl:hidden">
           <div class="grid gap-3">
