@@ -78,6 +78,36 @@ foreach ($sections as $name => $anchor) {
     })->middleware(TrackPageVisit::class)->name('section.sw.' . $name);
 }
 
+// Sitemap
+Route::get('/sitemap.xml', function () use ($sections) {
+    $urls = [
+        url('/'),
+        url('/sw'),
+    ];
+
+    foreach (array_keys($sections) as $name) {
+        $urls[] = url('/' . $name);
+        $urls[] = url('/sw/' . $name);
+    }
+
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    
+    foreach ($urls as $url) {
+        $xml .= '<url>';
+        $xml .= '<loc>' . htmlspecialchars($url) . '</loc>';
+        $xml .= '<changefreq>weekly</changefreq>';
+        $xml .= '<priority>' . ($url === url('/') || $url === url('/sw') ? '1.0' : '0.8') . '</priority>';
+        $xml .= '</url>';
+    }
+    
+    $xml .= '</urlset>';
+
+    return response($xml, 200, [
+        'Content-Type' => 'application/xml'
+    ]);
+})->name('sitemap');
+
 // Auth routes
 Route::redirect('/portal', '/portal/login')->name('portal');
 Route::get('/portal/login', [LoginController::class, 'showLoginForm'])->name('portal.login');

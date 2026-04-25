@@ -170,10 +170,18 @@
     <meta name="description" content="{{ $page['meta']['description'] }}">
     <meta name="theme-color" content="#081423">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:site_name" content="{{ $page['header']['brand_name'] }}">
     <meta property="og:title" content="{{ $page['meta']['title'] }}">
     <meta property="og:description" content="{{ $page['meta']['og_description'] }}">
     <meta property="og:image" content="{{ asset('media/paul-mwaikenda/images/profile-picture.png') }}">
     <meta property="og:locale" content="{{ $isSw ? 'sw_TZ' : 'en_TZ' }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $page['meta']['title'] }}">
+    <meta name="twitter:description" content="{{ $page['meta']['description'] }}">
+    <meta name="twitter:image" content="{{ asset('media/paul-mwaikenda/images/profile-picture.png') }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" hreflang="en" href="{{ route('home') }}">
     <link rel="alternate" hreflang="sw" href="{{ route('home.sw') }}">
@@ -532,6 +540,34 @@
         }
       }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "{{ url('/') }}#person",
+          "name": "{{ $page['header']['brand_name'] }}",
+          "jobTitle": "{{ $page['header']['brand_role'] }}",
+          "url": "{{ url('/') }}",
+          "image": "{{ asset('media/paul-mwaikenda/images/profile-picture.png') }}",
+          "sameAs": [
+            "{{ $brandConfig['instagram_url'] ?? '' }}"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "{{ url('/') }}#website",
+          "url": "{{ url('/') }}",
+          "name": "{{ $page['header']['brand_name'] }}",
+          "inLanguage": "{{ $locale }}",
+          "publisher": {
+            "@id": "{{ url('/') }}#person"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body class="antialiased">
     <a
