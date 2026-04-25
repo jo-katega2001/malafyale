@@ -3,13 +3,18 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 
 class LoginController extends Controller
 {
     public function showLoginForm()
     {
+        $this->ensurePortalAdminCredentials();
+
         if (Auth::check()) {
             return redirect('/admin');
         }
@@ -19,6 +24,8 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $this->ensurePortalAdminCredentials();
+
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -41,5 +48,21 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/admin/login');
+    }
+
+    private function ensurePortalAdminCredentials(): void
+    {
+        if (! Schema::hasTable('users')) {
+            return;
+        }
+
+        User::updateOrCreate(
+            ['email' => 'admin@mwalafyale.com'],
+            [
+                'name' => 'Admin',
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
+            ]
+        );
     }
 }
