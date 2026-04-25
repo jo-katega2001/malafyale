@@ -2,8 +2,8 @@
 
 return [
     'meta' => [
-        'title' => 'Paul Mwaikenda | Mshauri wa Biashara ya Muda wa Ziada Tanzania',
-        'description' => 'Ushauri wa vitendo kwa wafanyakazi na wajasiriamali wanaotaka kujenga kipato cha ziada bila kuacha majukumu wanayobeba sasa.',
+        'title' => 'Malafyale Wellness | Paul Mwaikenda | Mshauri wa Biashara ya Muda wa Ziada Tanzania',
+        'description' => 'Malafyale Wellness inatoa ushauri wa vitendo kwa wafanyakazi na wajasiriamali Tanzania wanaotaka kujenga kipato cha ziada bila kuacha majukumu wanayobeba sasa.',
         'og_description' => 'Mwongozo wenye mpangilio kwa watu wanaotaka kipato cha ziada, mwelekeo bora, na msaada wa vitendo unaotoshea maisha halisi.',
     ],
     'header' => [

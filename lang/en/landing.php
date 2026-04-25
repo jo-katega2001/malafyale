@@ -2,8 +2,8 @@
 
 return [
     'meta' => [
-        'title' => 'Paul Mwaikenda | Part-Time Business Coach in Tanzania',
-        'description' => 'Practical mentorship for employed professionals and entrepreneurs who want to build extra income without abandoning the responsibilities they already carry.',
+        'title' => 'Malafyale Wellness | Paul Mwaikenda | Part-Time Business Coach in Tanzania',
+        'description' => 'Malafyale Wellness provides practical mentorship for employed professionals and entrepreneurs in Tanzania who want to build extra income without abandoning the responsibilities they already carry.',
         'og_description' => 'Structured guidance for people who want extra income, better focus, and practical support that fits real life.',
     ],
     'header' => [
