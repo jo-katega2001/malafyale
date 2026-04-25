@@ -498,7 +498,6 @@ return [
         'copyright' => 'Copyright 2026 Paul Mwaikenda. All rights reserved.',
         'disclaimers' => [
             'All offers, fees, and access details are confirmed before payment.',
-            'Results vary. This website does not promise guaranteed income.',
             'Any partner, distributor, or special arrangement is clarified before a buyer commits.',
         ],
     ],

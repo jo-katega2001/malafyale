@@ -1,0 +1,1866 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Paul Mwaikenda | Part-Time Business &amp; Entrepreneurs Coach</title>
+    <meta
+      name="description"
+      content="A mobile-first personal brand website for Paul Mwaikenda with quick actions, clear offers, WhatsApp-first conversion, lead capture, and Tanzania-ready payment architecture."
+    >
+    <meta name="theme-color" content="#081423">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta property="og:title" content="Paul Mwaikenda | Part-Time Business &amp; Entrepreneurs Coach">
+    <meta
+      property="og:description"
+      content="Practical guidance for busy professionals and entrepreneurs who want to build extra income without disrupting current responsibilities."
+    >
+    <meta property="og:image" content="{{ asset('media/paul-mwaikenda/images/profile-picture.png') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#081423",
+              panel: "#10233c",
+              sand: "#f7f2ea",
+              mist: "#dce7f2",
+              accent: "#c7964d",
+              whatsapp: "#25D366"
+            },
+            boxShadow: {
+              lift: "0 20px 60px rgba(8, 20, 35, 0.18)",
+              soft: "0 14px 40px rgba(16, 35, 60, 0.12)"
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        background: #f7f2ea;
+        color: #132238;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .font-display {
+        font-family: "Trebuchet MS", "Avenir Next", "Segoe UI", sans-serif;
+      }
+
+      .section-anchor {
+        scroll-margin-top: 5.5rem;
+      }
+
+      .hero-noise {
+        background-image:
+          radial-gradient(circle at top left, rgba(199, 150, 77, 0.22), transparent 30%),
+          radial-gradient(circle at bottom right, rgba(37, 211, 102, 0.12), transparent 25%),
+          linear-gradient(135deg, rgba(8, 20, 35, 1) 0%, rgba(16, 35, 60, 1) 55%, rgba(10, 28, 48, 1) 100%);
+      }
+
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(14px);
+      }
+
+      .focus-ring:focus-visible,
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid rgba(199, 150, 77, 0.9);
+        outline-offset: 3px;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .no-scroll {
+        overflow: hidden;
+      }
+
+      /* ── Video Gallery ── */
+      .video-card {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        cursor: pointer;
+        background: #081423;
+        box-shadow: 0 14px 40px rgba(16,35,60,0.18);
+        transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease;
+      }
+      .video-card:hover {
+        transform: translateY(-6px) scale(1.015);
+        box-shadow: 0 28px 60px rgba(8,20,35,0.32);
+      }
+      .video-card img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        display: block;
+        transition: opacity 0.3s ease;
+      }
+      .video-card:hover img {
+        opacity: 0.82;
+      }
+      .video-card .play-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to top, rgba(8,20,35,0.72) 0%, transparent 55%);
+        transition: background 0.28s ease;
+      }
+      .video-card:hover .play-overlay {
+        background: linear-gradient(to top, rgba(8,20,35,0.85) 0%, rgba(8,20,35,0.18) 55%);
+      }
+      .play-btn {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: rgba(199,150,77,0.92);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 32px rgba(199,150,77,0.45);
+        transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), background 0.2s ease;
+        flex-shrink: 0;
+      }
+      .video-card:hover .play-btn {
+        transform: scale(1.18);
+        background: #c7964d;
+      }
+      .play-btn svg {
+        width: 26px;
+        height: 26px;
+        fill: #081423;
+        margin-left: 4px;
+      }
+      .video-card .card-meta {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 18px 20px 20px;
+      }
+      .video-card .card-duration {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(8,20,35,0.75);
+        backdrop-filter: blur(6px);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        padding: 3px 10px;
+        border-radius: 999px;
+        margin-bottom: 8px;
+      }
+      .video-card .card-title {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.4;
+        font-family: "Trebuchet MS", "Avenir Next", sans-serif;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      }
+      .featured-video-card .play-btn {
+        width: 84px;
+        height: 84px;
+      }
+      .featured-video-card .play-btn svg {
+        width: 34px;
+        height: 34px;
+        margin-left: 5px;
+      }
+      .featured-video-card .card-title {
+        font-size: 1.25rem;
+      }
+
+      /* ── Video Lightbox ── */
+      #videoLightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(4,10,20,0.92);
+        backdrop-filter: blur(8px);
+        padding: 16px;
+      }
+      #videoLightbox.open {
+        display: flex;
+      }
+      #videoLightbox .lb-inner {
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        border-radius: 24px;
+        overflow: hidden;
+        background: #000;
+        box-shadow: 0 40px 120px rgba(0,0,0,0.7);
+      }
+      #videoLightbox video {
+        width: 100%;
+        display: block;
+        max-height: 80vh;
+        background: #000;
+      }
+      #videoLightbox .lb-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 10;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(6px);
+        border: 1.5px solid rgba(255,255,255,0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #fff;
+        transition: background 0.2s;
+      }
+      #videoLightbox .lb-close:hover {
+        background: rgba(255,255,255,0.28);
+      }
+      #videoLightbox .lb-title {
+        background: #081423;
+        color: #fff;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+    </style>
+    @php
+      $brandConfig = config('brand');
+      $setupStatus = [
+          'whatsapp' => filled($brandConfig['contact']['whatsapp_number'] ?? null),
+          'phone' => filled($brandConfig['contact']['phone_number'] ?? null),
+          'starterGuidePayment' => filled($brandConfig['payment']['links']['starter_guide'] ?? null),
+          'starterKitPayment' => filled($brandConfig['payment']['links']['starter_kit'] ?? null),
+          'workshopPayment' => filled($brandConfig['payment']['links']['workshop'] ?? null),
+          'coachingPayment' => filled($brandConfig['payment']['links']['coaching'] ?? null),
+          'privateMentorshipPayment' => filled($brandConfig['payment']['links']['private_mentorship'] ?? null),
+          'programPayment' => filled($brandConfig['payment']['links']['program_90_day'] ?? null),
+      ];
+      $siteConfig = [
+          'brandName' => 'Paul Mwaikenda',
+          'instagramHandle' => $brandConfig['instagram_handle'],
+          'instagramUrl' => $brandConfig['instagram_url'],
+          'whatsappNumber' => $brandConfig['contact']['whatsapp_number'],
+          'phoneNumber' => $brandConfig['contact']['phone_number'],
+          'paymentGateway' => $brandConfig['payment']['gateway'],
+          'apiCreateOrder' => $brandConfig['payment']['api']['create_order'],
+          'apiVerifyPayment' => $brandConfig['payment']['api']['verify_payment'],
+          'webhookCallbackUrl' => $brandConfig['payment']['api']['webhook_callback_url'],
+          'leadCaptureEndpoint' => route('leads.store'),
+          'leadSuccessMessage' => 'Request received. We will follow up soon.',
+          'setup' => $setupStatus,
+      ];
+    @endphp
+  </head>
+  <body class="antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-ink"
+    >
+      Skip to content
+    </a>
+
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="flex h-16 items-center justify-between gap-4">
+          <a href="#main" class="flex items-center gap-3 text-white">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-bold text-ink">PM</span>
+            <span class="leading-tight">
+              <span class="block font-display text-sm font-semibold uppercase tracking-[0.18em] text-white/70">Paul Mwaikenda</span>
+              <span class="block text-sm text-white">Part-Time Business Coach</span>
+            </span>
+          </a>
+
+          <nav class="hidden items-center gap-6 text-sm text-white/80 md:flex">
+            <a href="#about" class="transition hover:text-white">About</a>
+            <a href="#featured-program" class="transition hover:text-white">Program</a>
+            <a href="#offers" class="transition hover:text-white">Offers</a>
+            <a href="#payments" class="transition hover:text-white">Payments</a>
+            <a href="#faq" class="transition hover:text-white">FAQ</a>
+          </nav>
+
+          <div class="hidden items-center gap-3 sm:flex">
+            <a
+              href="#"
+              data-call-link
+              class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
+            >
+              Call
+            </a>
+            <a
+              href="#"
+              data-wa-link
+              data-message="Habari Paul, nimetoka kwenye website yako. Naomba unielekeze hatua ya kuanza."
+              class="rounded-full bg-whatsapp px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-green-900/20 transition hover:bg-green-500"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
+
+          <button
+            type="button"
+            id="menuToggle"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white md:hidden"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden border-t border-white/10 py-4 md:hidden">
+          <div class="grid gap-3">
+            <a href="#about" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">Start Here</a>
+            <a href="#featured-program" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">Featured Program</a>
+            <a href="#offers" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">View Offers</a>
+            <a href="#payments" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">Payment Options</a>
+            <a
+              href="#"
+              data-wa-link
+              data-message="Habari Paul, nimefungua website yako kwenye simu. Naomba msaada kupitia WhatsApp."
+              class="rounded-2xl bg-whatsapp px-4 py-3 text-center font-semibold text-white"
+            >
+              Chat on WhatsApp
+            </a>
+            <a href="#" data-call-link class="rounded-2xl border border-white/10 px-4 py-3 text-center font-semibold text-white">Call Now</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="pb-24 sm:pb-10">
+      <section class="hero-noise relative overflow-hidden text-white">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06),transparent_40%)]"></div>
+        <div class="mx-auto max-w-6xl px-4 pb-16 pt-10 md:pb-24 md:pt-16">
+          <div class="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+            <div class="relative z-10">
+              <span class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white/80">
+                Tanzania-ready mentorship for busy professionals
+              </span>
+              <h1 class="mt-5 max-w-3xl font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                Build a part-time business that fits your real life, not just your ambition.
+              </h1>
+              <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-200">
+                Paul Mwaikenda helps professionals and entrepreneurs grow extra income with practical guidance, clear offers, and step-by-step support that works alongside current responsibilities.
+              </p>
+              <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-300">
+                No hype. No confusing funnel. Just a clear place to start, simple payment options, and direct WhatsApp support when you need it. Karibu.
+              </p>
+
+              <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="#"
+                  data-wa-link
+                  data-message="Habari Paul, nataka kujenga extra income bila kuacha majukumu yangu ya sasa. Naomba tuanze na hatua ya kwanza."
+                  class="inline-flex min-h-[56px] items-center justify-center rounded-2xl bg-whatsapp px-6 py-4 text-base font-semibold text-white shadow-lg shadow-green-900/20 transition hover:bg-green-500"
+                >
+                  Chat on WhatsApp
+                </a>
+                <a
+                  href="#offers"
+                  class="inline-flex min-h-[56px] items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-6 py-4 text-base font-semibold text-white transition hover:bg-white/20"
+                >
+                  View Offers
+                </a>
+                <a
+                  href="#"
+                  data-call-link
+                  class="inline-flex min-h-[56px] items-center justify-center rounded-2xl border border-white/20 px-6 py-4 text-base font-semibold text-white transition hover:bg-white/10"
+                >
+                  Call Now
+                </a>
+              </div>
+
+              <div class="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                <div class="rounded-2xl border border-white/10 bg-white/10 px-4 py-4">
+                  <p class="text-xs uppercase tracking-[0.22em] text-white/60">Built for</p>
+                  <p class="mt-2 text-sm font-semibold text-white">Busy professionals</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/10 px-4 py-4">
+                  <p class="text-xs uppercase tracking-[0.22em] text-white/60">Approach</p>
+                  <p class="mt-2 text-sm font-semibold text-white">Practical mentorship</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/10 px-4 py-4">
+                  <p class="text-xs uppercase tracking-[0.22em] text-white/60">Support</p>
+                  <p class="mt-2 text-sm font-semibold text-white">WhatsApp and call first</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/10 px-4 py-4">
+                  <p class="text-xs uppercase tracking-[0.22em] text-white/60">Checkout</p>
+                  <p class="mt-2 text-sm font-semibold text-white">Mobile money ready</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative z-10">
+              <div class="absolute -left-6 top-8 h-20 w-20 rounded-full bg-accent/35 blur-2xl"></div>
+              <div class="glass-panel relative overflow-hidden rounded-[30px] border border-white/20 p-4 shadow-lift">
+                <img
+                  src="{{ asset('media/paul-mwaikenda/images/profile-picture.png') }}"
+                  alt="Portrait of Paul Mwaikenda"
+                  class="h-[25rem] w-full rounded-[24px] object-cover sm:h-[31rem]"
+                  style="object-position: center 15%;"
+                  loading="eager"
+                  width="2048"
+                  height="3072"
+                >
+                <div class="mt-4 grid gap-3 sm:grid-cols-[1.15fr_0.85fr]">
+                  <div class="rounded-[22px] bg-white px-5 py-4 text-slate-900 shadow-soft">
+                    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Public Positioning</p>
+                    <h2 class="mt-2 font-display text-xl font-bold text-ink">Part-Time Business &amp; Entrepreneurs Coach</h2>
+                    <p class="mt-2 text-sm leading-7 text-slate-600">
+                      Helping people build extra income, with practical guidance that can fit around work, family, and business responsibilities.
+                    </p>
+                  </div>
+                  <div class="rounded-[22px] border border-white/20 bg-ink/60 px-5 py-4">
+                    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">Fast Path</p>
+                    <p class="mt-2 text-sm leading-7 text-white/90">
+                      Need clarity before choosing an offer? Tupo WhatsApp. Ask first, then decide.
+                    </p>
+                    <a
+                      href="#"
+                      data-wa-link
+                      data-message="Habari Paul, ningependa kuelewa huduma zako kabla ya kuchagua offer."
+                      class="mt-4 inline-flex min-h-[48px] items-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:bg-sand"
+                    >
+                      Ask a Quick Question
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="quick-actions" class="section-anchor relative z-10 -mt-10 mx-auto max-w-6xl px-4">
+        <div class="rounded-[30px] border border-slate-200/70 bg-white p-4 shadow-lift md:p-6">
+          <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Quick Actions</p>
+              <h2 class="mt-2 font-display text-2xl font-bold text-ink md:text-3xl">A premium Link-in-bio style hub, built for fast decisions</h2>
+              <p class="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
+                Some visitors want to understand Paul first. Others want pricing, payment details, a quick call, or a direct WhatsApp chat. Choose your path without friction.
+              </p>
+            </div>
+            <a href="#offers" class="inline-flex min-h-[48px] items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50">
+              Browse All Offers
+            </a>
+          </div>
+
+          <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <a href="#about" class="rounded-[24px] border border-slate-200 bg-slate-50 px-5 py-4 transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Start Here</p>
+              <p class="mt-2 text-lg font-semibold text-ink">Understand Paul's approach</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">See who this is for, how the journey works, and what to expect before you commit.</p>
+            </a>
+            <a href="#offers" class="rounded-[24px] border border-slate-200 bg-slate-50 px-5 py-4 transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">View Offers</p>
+              <p class="mt-2 text-lg font-semibold text-ink">Explore products and coaching</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">From beginner resources to premium mentorship, choose the level that fits you now.</p>
+            </a>
+            <a
+              href="#"
+              data-wa-link
+              data-message="Habari Paul, nataka kuzungumza nawe moja kwa moja kuhusu offers zako."
+              class="rounded-[24px] border border-green-200 bg-green-50 px-5 py-4 transition hover:-translate-y-0.5 hover:border-green-300 hover:bg-white"
+            >
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-800">Chat on WhatsApp</p>
+              <p class="mt-2 text-lg font-semibold text-ink">Ask a real question, fast</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Ideal if you want guidance, reassurance, or help choosing the right offer.</p>
+            </a>
+            <a
+              href="#"
+              data-call-link
+              class="rounded-[24px] border border-slate-200 bg-slate-50 px-5 py-4 transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white"
+            >
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Call Now</p>
+              <p class="mt-2 text-lg font-semibold text-ink">Tap to speak directly</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Best for urgent questions, quick clarity, or personal guidance before payment.</p>
+            </a>
+            <a href="#payments" class="rounded-[24px] border border-slate-200 bg-slate-50 px-5 py-4 transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Payment Options</p>
+              <p class="mt-2 text-lg font-semibold text-ink">See how payment works</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Mobile money, card, and assisted checkout guidance made clear before you pay.</p>
+            </a>
+            <a href="#intro-video" class="rounded-[24px] border border-slate-200 bg-slate-50 px-5 py-4 transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Watch Intro</p>
+              <p class="mt-2 text-lg font-semibold text-ink">Hear the direction in a short video</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">A simple, mobile-friendly way to understand the message before browsing everything.</p>
+            </a>
+          </div>
+
+          <div class="mt-3 grid gap-3 sm:grid-cols-2">
+            <a
+              href="#"
+              data-wa-link
+              data-message="Habari Paul, nataka kujiunga na 90 Days of Income Generating Activities. Naomba maelekezo."
+              class="rounded-[24px] bg-ink px-5 py-4 text-white transition hover:bg-panel"
+            >
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">Apply / Join Program</p>
+              <p class="mt-2 text-lg font-semibold">Ready for the guided path?</p>
+              <p class="mt-2 text-sm leading-6 text-white/75">Use the fastest route if you already know you want structured support and accountability.</p>
+            </a>
+            <a
+              href="#"
+              data-open-offer
+              data-offer-name="Starter Guide"
+              data-price="Free"
+              data-format="PDF guide + checklist"
+              data-for="Busy beginners who need a calm starting point"
+              data-outcome="Understand practical first steps before committing to a bigger offer"
+              data-payment-link="{{ config('brand.payment.links.starter_guide') }}"
+              data-payment-type="whatsapp"
+              data-payment-methods="WhatsApp delivery|Email delivery"
+              data-whatsapp-message="Habari Paul, ningependa kupata Starter Guide yako ili nianze vizuri."
+              data-next-steps="You receive a simple response path, starter guidance, and the next action that fits your schedule."
+              class="rounded-[24px] border border-slate-200 bg-slate-50 px-5 py-4 text-left transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white"
+            >
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Start Small</p>
+              <p class="mt-2 text-lg font-semibold text-ink">Open a guided starter option</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Useful when you prefer a low-pressure first step before booking a program or coaching package.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-6xl px-4 py-8">
+        <div class="rounded-[28px] border border-slate-200 bg-white px-5 py-6 shadow-soft">
+          <div class="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div class="flex flex-wrap gap-3">
+              <span class="inline-flex min-h-[40px] items-center rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">Part-time friendly</span>
+              <span class="inline-flex min-h-[40px] items-center rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">Beginner-friendly guidance</span>
+              <span class="inline-flex min-h-[40px] items-center rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">WhatsApp support available</span>
+              <span class="inline-flex min-h-[40px] items-center rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">Secure checkout architecture ready</span>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
+              <span class="rounded-full border border-slate-200 px-3 py-2">M-Pesa</span>
+              <span class="rounded-full border border-slate-200 px-3 py-2">Tigo Pesa</span>
+              <span class="rounded-full border border-slate-200 px-3 py-2">Airtel Money</span>
+              <span class="rounded-full border border-slate-200 px-3 py-2">Halo Pesa</span>
+              <span class="rounded-full border border-slate-200 px-3 py-2">Card</span>
+              <span class="rounded-full border border-slate-200 px-3 py-2">Bank Transfer</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section-anchor mx-auto max-w-6xl px-4 py-8 md:py-14">
+        <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+          <div class="rounded-[30px] bg-ink p-6 text-white shadow-lift">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">About Paul</p>
+            <h2 class="mt-3 font-display text-3xl font-bold">Practical guidance for people who cannot pause real life to start something new</h2>
+            <p class="mt-4 text-base leading-8 text-slate-200">
+              Paul's public message is simple: you can start building extra income while still handling your current work, business, and family responsibilities. The focus is not on hype. The focus is on action, mentorship, and clear direction.
+            </p>
+            <p class="mt-4 text-base leading-8 text-slate-200">
+              That means helping people understand where to begin, what fits a part-time schedule, how to move with confidence, and how to get support when questions come up. Hatua kwa hatua.
+            </p>
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-[22px] border border-white/10 bg-white/10 px-4 py-4">
+                <p class="text-xs uppercase tracking-[0.18em] text-white/60">Brand Tone</p>
+                <p class="mt-2 text-sm leading-7 text-white">Supportive, practical, locally aware, and easy to talk to.</p>
+              </div>
+              <div class="rounded-[22px] border border-white/10 bg-white/10 px-4 py-4">
+                <p class="text-xs uppercase tracking-[0.18em] text-white/60">Best Next Step</p>
+                <p class="mt-2 text-sm leading-7 text-white">Browse an offer, ask a question, or call directly if you want clarity faster.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-4">
+            <div class="rounded-[30px] border border-slate-200 bg-white p-6 shadow-soft">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">What people need from this site</p>
+              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-[22px] bg-slate-50 p-4">
+                  <p class="text-sm font-semibold text-ink">A clear start</p>
+                  <p class="mt-2 text-sm leading-7 text-slate-600">Not everyone wants a long sales page. Some people want the quickest route to the right next step.</p>
+                </div>
+                <div class="rounded-[22px] bg-slate-50 p-4">
+                  <p class="text-sm font-semibold text-ink">A trustworthy offer list</p>
+                  <p class="mt-2 text-sm leading-7 text-slate-600">Prices, formats, payment methods, and who each offer is for should be easy to scan on mobile.</p>
+                </div>
+                <div class="rounded-[22px] bg-slate-50 p-4">
+                  <p class="text-sm font-semibold text-ink">Human support</p>
+                  <p class="mt-2 text-sm leading-7 text-slate-600">WhatsApp and call options matter because many buyers want direct reassurance before paying.</p>
+                </div>
+                <div class="rounded-[22px] bg-slate-50 p-4">
+                  <p class="text-sm font-semibold text-ink">Payment clarity</p>
+                  <p class="mt-2 text-sm leading-7 text-slate-600">Mobile money first, clear next steps after payment, and a fallback path if someone prefers help first.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-[30px] border border-slate-200 bg-white p-6 shadow-soft">
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Need a personal reply?</p>
+                  <h3 class="mt-2 font-display text-2xl font-bold text-ink">Use WhatsApp as the main conversion path</h3>
+                </div>
+                <a
+                  href="#"
+                  data-wa-link
+                  data-message="Habari Paul, nimesoma sehemu ya About. Naomba unisaidie nichague next step."
+                  class="inline-flex min-h-[50px] items-center justify-center rounded-full bg-whatsapp px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-500"
+                >
+                  Ask Paul on WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {{-- ═══════════════════════════════════════
+           VIDEO GALLERY — All 4 videos with custom thumbnails
+      ═══════════════════════════════════════ --}}
+      <section id="intro-video" class="section-anchor mx-auto max-w-6xl px-4 py-8 md:py-14">
+
+        {{-- Section header --}}
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mb-8">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Watch &amp; Learn</p>
+            <h2 class="mt-2 font-display text-3xl font-bold text-ink md:text-4xl">Paul in his own words</h2>
+            <p class="mt-2 max-w-xl text-sm leading-7 text-slate-600">Real video content from Paul — hear the message, feel the tone, and decide your next step.</p>
+          </div>
+          <a
+            href="#"
+            data-wa-link
+            data-message="Habari Paul, nimeangalia video zako. Naomba unielekeze offer inayonifaa."
+            class="inline-flex min-h-[48px] items-center justify-center rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white transition hover:bg-panel whitespace-nowrap"
+          >
+            Ask After Watching
+          </a>
+        </div>
+
+        {{-- Featured video (large) --}}
+        <div
+          class="video-card featured-video-card w-full mb-6"
+          data-video-src="{{ asset('media/paul-mwaikenda/videos/training-entrepreneurs-and-coaching.mp4') }}"
+          data-video-title="Training Entrepreneurs &amp; Coaching"
+          role="button"
+          tabindex="0"
+          aria-label="Play video: Training Entrepreneurs and Coaching"
+        >
+          <img
+            src="{{ asset('media/paul-mwaikenda/images/thumb-training-entrepreneurs.png') }}"
+            alt="Training Entrepreneurs and Coaching — video thumbnail"
+            style="aspect-ratio:16/9; object-fit:cover; object-position:top center; width:100%;"
+            loading="lazy"
+          >
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="card-meta">
+              <div class="card-duration">▶ Featured</div>
+              <div class="card-title">Training Entrepreneurs &amp; Coaching</div>
+            </div>
+          </div>
+        </div>
+
+        {{-- 3-column grid of remaining videos --}}
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+          <div
+            class="video-card"
+            data-video-src="{{ asset('media/paul-mwaikenda/videos/if-i-can-do-it-you-can-too.mp4') }}"
+            data-video-title="If I Can Do It, You Can Too"
+            role="button"
+            tabindex="0"
+            aria-label="Play video: If I Can Do It, You Can Too"
+          >
+            <img
+              src="{{ asset('media/paul-mwaikenda/images/thumb-if-i-can-do-it.png') }}"
+              alt="If I Can Do It You Can Too — video thumbnail"
+              loading="lazy"
+            >
+            <div class="play-overlay">
+              <div class="play-btn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <div class="card-meta">
+                <div class="card-title">If I Can Do It, You Can Too</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="video-card"
+            data-video-src="{{ asset('media/paul-mwaikenda/videos/part-time-business-leverage-income.mp4') }}"
+            data-video-title="Part-Time Business &amp; Leverage Income"
+            role="button"
+            tabindex="0"
+            aria-label="Play video: Part-Time Business and Leverage Income"
+          >
+            <img
+              src="{{ asset('media/paul-mwaikenda/images/thumb-part-time-business.png') }}"
+              alt="Part-Time Business Leverage Income — video thumbnail"
+              loading="lazy"
+            >
+            <div class="play-overlay">
+              <div class="play-btn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <div class="card-meta">
+                <div class="card-title">Part-Time Business &amp; Leverage Income</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="video-card"
+            data-video-src="{{ asset('media/paul-mwaikenda/videos/teach-train-and-coach.mp4') }}"
+            data-video-title="Teach, Train and Coach"
+            role="button"
+            tabindex="0"
+            aria-label="Play video: Teach Train and Coach"
+          >
+            <img
+              src="{{ asset('media/paul-mwaikenda/images/thumb-teach-train-coach.png') }}"
+              alt="Teach Train and Coach — video thumbnail"
+              loading="lazy"
+            >
+            <div class="play-overlay">
+              <div class="play-btn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <div class="card-meta">
+                <div class="card-title">Teach, Train and Coach</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {{-- CTA strip below gallery --}}
+        <div class="mt-6 flex flex-col items-center gap-3 rounded-[24px] bg-ink px-6 py-6 text-center sm:flex-row sm:justify-between sm:text-left">
+          <div>
+            <p class="text-sm font-semibold text-white">Ready to take the next step?</p>
+            <p class="mt-1 text-sm text-white/70">Chat with Paul directly — questions welcome before any commitment.</p>
+          </div>
+          <div class="flex gap-3">
+            <a
+              href="#"
+              data-wa-link
+              data-message="Habari Paul, nimetazama video zako na nina maswali. Naomba tuongee."
+              class="inline-flex min-h-[48px] items-center rounded-full bg-whatsapp px-5 py-2 text-sm font-semibold text-white transition hover:bg-green-500"
+            >
+              Chat on WhatsApp
+            </a>
+            <a href="#offers" class="inline-flex min-h-[48px] items-center rounded-full border border-white/25 px-5 py-2 text-sm font-semibold text-white transition hover:bg-white/10">
+              View Offers
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {{-- ═══════════════════════════════════════
+           VIDEO LIGHTBOX
+      ═══════════════════════════════════════ --}}
+      <div id="videoLightbox" role="dialog" aria-modal="true" aria-label="Video player">
+        <div class="lb-inner">
+          <button class="lb-close" id="lbClose" aria-label="Close video">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M6 6l12 12M18 6L6 18"/>
+            </svg>
+          </button>
+          <video id="lbVideo" controls playsinline preload="none"></video>
+          <div class="lb-title" id="lbTitle"></div>
+        </div>
+      </div>
+
+      <section class="mx-auto max-w-6xl px-4 py-8 md:py-14">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Who This Is For</p>
+            <h2 class="mt-2 font-display text-3xl font-bold text-ink">A fast self-selection section for the right audience</h2>
+          </div>
+          <p class="max-w-xl text-sm leading-7 text-slate-600">If a visitor sees themselves here, they can move quickly. If they need reassurance, the WhatsApp path stays close at hand.</p>
+        </div>
+
+        <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div class="rounded-[24px] border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="text-lg font-semibold text-ink">Employed professionals</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">People with a full-time job who want a practical side-business path without walking away from steady responsibilities.</p>
+          </div>
+          <div class="rounded-[24px] border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="text-lg font-semibold text-ink">Beginners who need guidance</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">Those who are willing to learn but want clarity, structure, and mentorship instead of confusing information.</p>
+          </div>
+          <div class="rounded-[24px] border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="text-lg font-semibold text-ink">Entrepreneurs seeking focus</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">Business-minded people who need a more structured plan for income-generating activities and execution.</p>
+          </div>
+          <div class="rounded-[24px] border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="text-lg font-semibold text-ink">People with limited time</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">Visitors who need options that can fit around work, study, family, or another business.</p>
+          </div>
+          <div class="rounded-[24px] border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="text-lg font-semibold text-ink">People who want to ask first</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">Buyers who prefer to chat on WhatsApp before paying, especially when trust and clarity matter.</p>
+          </div>
+          <div class="rounded-[24px] border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="text-lg font-semibold text-ink">People who want practical, not flashy</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">This is for visitors who value a calm, grounded path over aggressive promises or unrealistic claims.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="featured-program" class="section-anchor mx-auto max-w-6xl px-4 py-8 md:py-14">
+        <div class="overflow-hidden rounded-[34px] bg-ink text-white shadow-lift">
+          <div class="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+            <div class="p-6 md:p-8 lg:p-10">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">Featured Program</p>
+              <h2 class="mt-3 font-display text-3xl font-bold md:text-4xl">90 Days of Income Generating Activities</h2>
+              <p class="mt-4 max-w-2xl text-base leading-8 text-slate-200">
+                A focused guided pathway for people who want accountability, practical weekly action, and support that helps them move from interest to consistent execution.
+              </p>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                <div class="rounded-[24px] border border-white/10 bg-white/10 p-4">
+                  <p class="text-xs uppercase tracking-[0.18em] text-white/60">Best for</p>
+                  <p class="mt-2 text-sm leading-7 text-white">People who want structure, momentum, and help staying active over 90 days.</p>
+                </div>
+                <div class="rounded-[24px] border border-white/10 bg-white/10 p-4">
+                  <p class="text-xs uppercase tracking-[0.18em] text-white/60">Format</p>
+                  <p class="mt-2 text-sm leading-7 text-white">Guided program, accountability support, check-ins, and direct contact options.</p>
+                </div>
+              </div>
+              <div class="mt-6 flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.16em] text-white/75">
+                <span class="rounded-full border border-white/20 px-3 py-2">Price placeholder: TZS 350,000</span>
+                <span class="rounded-full border border-white/20 px-3 py-2">Mobile money compatible</span>
+                <span class="rounded-full border border-white/20 px-3 py-2">WhatsApp support available</span>
+              </div>
+              <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  data-open-offer
+                  data-offer-name="90 Days of Income Generating Activities"
+                  data-price="TZS 350,000"
+                  data-format="Guided program"
+                  data-for="Professionals and entrepreneurs who need structured accountability"
+                  data-outcome="Move from intention to disciplined part-time action with weekly guidance"
+                  data-payment-link="{{ config('brand.payment.links.program_90_day') }}"
+                  data-payment-type="reserve"
+                  data-payment-methods="M-Pesa|Tigo Pesa|Airtel Money|Halo Pesa|Card|Bank Transfer"
+                  data-whatsapp-message="Habari Paul, niko tayari kujua zaidi kuhusu 90 Days of Income Generating Activities."
+                  data-next-steps="After payment or reservation, you receive onboarding guidance, confirmation, and the next action for your program start."
+                  class="inline-flex min-h-[56px] items-center justify-center rounded-2xl bg-accent px-6 py-4 text-base font-semibold text-ink transition hover:bg-amber-300"
+                >
+                  Reserve / Pay for Program
+                </button>
+                <a
+                  href="#"
+                  data-wa-link
+                  data-message="Habari Paul, nataka kujiunga na 90 Days of Income Generating Activities lakini nina maswali mawili kabla sijalipia."
+                  class="inline-flex min-h-[56px] items-center justify-center rounded-2xl border border-white/20 px-6 py-4 text-base font-semibold text-white transition hover:bg-white/10"
+                >
+                  Ask Before Joining
+                </a>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 lg:p-10">
+              <div class="rounded-[28px] bg-sand p-6 text-slate-900">
+                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">How the featured offer helps</p>
+                <div class="mt-4 space-y-4">
+                  <div class="rounded-[22px] bg-white p-4 shadow-soft">
+                    <h3 class="text-base font-semibold text-ink">1. Clear weekly focus</h3>
+                    <p class="mt-2 text-sm leading-7 text-slate-600">Busy people need clear priorities, not endless theory. This offer emphasizes guided action.</p>
+                  </div>
+                  <div class="rounded-[22px] bg-white p-4 shadow-soft">
+                    <h3 class="text-base font-semibold text-ink">2. Real support</h3>
+                    <p class="mt-2 text-sm leading-7 text-slate-600">Questions can be handled through WhatsApp so momentum does not die when uncertainty shows up.</p>
+                  </div>
+                  <div class="rounded-[22px] bg-white p-4 shadow-soft">
+                    <h3 class="text-base font-semibold text-ink">3. Payment clarity</h3>
+                    <p class="mt-2 text-sm leading-7 text-slate-600">Hosted checkout can be used, but assisted payment support is still available for buyers who prefer human guidance.</p>
+                  </div>
+                </div>
+                <p class="mt-5 text-sm leading-7 text-slate-600">This block is designed as a campaign focus, so it can easily be updated later for a new enrollment, workshop, or limited intake mentorship.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="offers" class="section-anchor mx-auto max-w-6xl px-4 py-8 md:py-14">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Products &amp; Offers</p>
+            <h2 class="mt-2 font-display text-3xl font-bold text-ink">A mobile-first offer catalog with clear next steps</h2>
+          </div>
+          <p class="max-w-xl text-sm leading-7 text-slate-600">
+            Beginner offers, mid-tier training, and premium mentorship are visually separated so users can self-select quickly.
+          </p>
+        </div>
+
+        <div class="mt-6 grid gap-5 xl:grid-cols-3">
+          <article class="rounded-[28px] border border-emerald-200 bg-white p-6 shadow-soft">
+            <span class="inline-flex rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-emerald-800">Beginner / Start Here</span>
+            <h3 class="mt-4 font-display text-2xl font-bold text-ink">Starter Guide</h3>
+            <p class="mt-2 text-sm font-semibold text-slate-500">Who it is for: first-time visitors who want a low-pressure start</p>
+            <p class="mt-4 text-sm leading-7 text-slate-600">A simple resource to understand the first practical steps, key questions to ask, and how to choose an offer that matches your current season.</p>
+            <div class="mt-5 space-y-2 text-sm text-slate-600">
+              <p><span class="font-semibold text-slate-800">Outcome:</span> More clarity and less confusion about where to begin.</p>
+              <p><span class="font-semibold text-slate-800">Format:</span> PDF guide and checklist.</p>
+              <p><span class="font-semibold text-slate-800">Price:</span> Free or lead-magnet placeholder.</p>
+              <p><span class="font-semibold text-slate-800">Payment label:</span> WhatsApp delivery / email follow-up.</p>
+            </div>
+            <div class="mt-6 flex flex-col gap-3">
+              <button
+                type="button"
+                data-open-offer
+                data-offer-name="Starter Guide"
+                data-price="Free"
+                data-format="PDF guide + checklist"
+                data-for="Beginners who want clarity without pressure"
+                data-outcome="Get a calm starting point and choose your next step with confidence"
+                data-payment-link="{{ config('brand.payment.links.starter_guide') }}"
+                data-payment-type="whatsapp"
+                data-payment-methods="WhatsApp delivery|Email delivery"
+                data-whatsapp-message="Habari Paul, naomba Starter Guide yako kama hatua ya kuanza."
+                data-next-steps="After you request it, the guide can be shared directly and used as the first follow-up touchpoint."
+                class="inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-panel"
+              >
+                Learn More
+              </button>
+              <a
+                href="#"
+                data-wa-link
+                data-message="Habari Paul, naomba Starter Guide ili nianze kuelewa hatua za kwanza."
+                class="inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
+          </article>
+
+          <article class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-soft">
+            <span class="inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-amber-900">Low-Ticket Digital Offer</span>
+            <h3 class="mt-4 font-display text-2xl font-bold text-ink">Part-Time Business Starter Kit</h3>
+            <p class="mt-2 text-sm font-semibold text-slate-500">Who it is for: people ready to stop guessing and start organizing</p>
+            <p class="mt-4 text-sm leading-7 text-slate-600">A practical digital resource covering basic positioning, simple action planning, and beginner implementation steps for part-time business building.</p>
+            <div class="mt-5 space-y-2 text-sm text-slate-600">
+              <p><span class="font-semibold text-slate-800">Outcome:</span> A more organized starting plan and less scattered effort.</p>
+              <p><span class="font-semibold text-slate-800">Format:</span> Ebook, worksheet, and action checklist.</p>
+              <p><span class="font-semibold text-slate-800">Price:</span> TZS 29,000</p>
+              <p><span class="font-semibold text-slate-800">Payment label:</span> Mobile money, card, or bank transfer compatible.</p>
+            </div>
+            <div class="mt-6 flex flex-col gap-3">
+              <button
+                type="button"
+                data-open-offer
+                data-offer-name="Part-Time Business Starter Kit"
+                data-price="TZS 29,000"
+                data-format="Ebook + worksheet bundle"
+                data-for="Busy people who want a clearer side-business roadmap"
+                data-outcome="Create a stronger foundation and reduce beginner confusion"
+                data-payment-link="{{ config('brand.payment.links.starter_kit') }}"
+                data-payment-type="hosted"
+                data-payment-methods="M-Pesa|Tigo Pesa|Airtel Money|Halo Pesa|Card|Bank Transfer"
+                data-whatsapp-message="Habari Paul, ningependa kununua Part-Time Business Starter Kit."
+                data-next-steps="After payment verification, the digital product can be delivered automatically or confirmed through WhatsApp."
+                class="inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-accent px-5 py-3 text-sm font-semibold text-ink transition hover:bg-amber-300"
+              >
+                Buy Now
+              </button>
+              <a
+                href="#"
+                data-wa-link
+                data-message="Habari Paul, nimeona Part-Time Business Starter Kit. Naweza kuuliza swali kabla sijalipa?"
+                class="inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+              >
+                Need Help First?
+              </a>
+            </div>
+          </article>
+
+          <article class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-soft">
+            <span class="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-blue-900">Workshop / Training</span>
+            <h3 class="mt-4 font-display text-2xl font-bold text-ink">Weekend Growth Workshop</h3>
+            <p class="mt-2 text-sm font-semibold text-slate-500">Who it is for: people who want live direction and Q&amp;A</p>
+            <p class="mt-4 text-sm leading-7 text-slate-600">A focused training format for people who prefer real-time guidance, practical teaching, and the chance to ask questions before taking bigger steps.</p>
+            <div class="mt-5 space-y-2 text-sm text-slate-600">
+              <p><span class="font-semibold text-slate-800">Outcome:</span> Better understanding, stronger direction, and clearer confidence to act.</p>
+              <p><span class="font-semibold text-slate-800">Format:</span> Workshop, webinar, or recorded training.</p>
+              <p><span class="font-semibold text-slate-800">Price:</span> TZS 79,000</p>
+              <p><span class="font-semibold text-slate-800">Payment label:</span> Reserve with mobile money or hosted checkout.</p>
+            </div>
+            <div class="mt-6 flex flex-col gap-3">
+              <button
+                type="button"
+                data-open-offer
+                data-offer-name="Weekend Growth Workshop"
+                data-price="TZS 79,000"
+                data-format="Live workshop / webinar"
+                data-for="People who learn best with guided teaching and Q&amp;A"
+                data-outcome="Get practical understanding and a stronger plan to move forward"
+                data-payment-link="{{ config('brand.payment.links.workshop') }}"
+                data-payment-type="reserve"
+                data-payment-methods="M-Pesa|Airtel Money|Card|Bank Transfer"
+                data-whatsapp-message="Habari Paul, ningependa kuhifadhi nafasi kwa Weekend Growth Workshop."
+                data-next-steps="After reservation or payment, attendees receive event details, joining instructions, and support on the next step."
+                class="inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-panel"
+              >
+                Reserve Your Spot
+              </button>
+              <a
+                href="#"
+                data-wa-link
+                data-message="Habari Paul, naomba maelezo zaidi kuhusu Weekend Growth Workshop."
+                class="inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
+          </article>
+
+          <article class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-soft">
+            <span class="inline-flex rounded-full bg-violet-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-violet-900">Coaching Package</span>
+            <h3 class="mt-4 font-display text-2xl font-bold text-ink">Part-Time Business Coaching</h3>
+            <p class="mt-2 text-sm font-semibold text-slate-500">Who it is for: people who want guided implementation and accountability</p>
+            <p class="mt-4 text-sm leading-7 text-slate-600">A more personal support path for people who want closer guidance, practical follow-up, and help adapting the process to their own schedule and context.</p>
+            <div class="mt-5 space-y-2 text-sm text-slate-600">
+              <p><span class="font-semibold text-slate-800">Outcome:</span> Stronger consistency, better clarity, and a more supported implementation journey.</p>
+              <p><span class="font-semibold text-slate-800">Format:</span> Coaching sessions, check-ins, and WhatsApp follow-up.</p>
+              <p><span class="font-semibold text-slate-800">Price:</span> TZS 180,000</p>
+              <p><span class="font-semibold text-slate-800">Payment label:</span> Mobile money, card, and assisted checkout supported.</p>
+            </div>
+            <div class="mt-6 flex flex-col gap-3">
+              <button
+                type="button"
+                data-open-offer
+                data-offer-name="Part-Time Business Coaching"
+                data-price="TZS 180,000"
+                data-format="Coaching sessions + WhatsApp support"
+                data-for="People who need personal support and accountability"
+                data-outcome="Start with more guidance and continue with better consistency"
+                data-payment-link="{{ config('brand.payment.links.coaching') }}"
+                data-payment-type="hosted"
+                data-payment-methods="M-Pesa|Tigo Pesa|Airtel Money|Card|Bank Transfer"
+                data-whatsapp-message="Habari Paul, ningependa maelezo kuhusu Part-Time Business Coaching."
+                data-next-steps="After checkout or confirmation, onboarding details, scheduling steps, and WhatsApp support can begin."
+                class="inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-accent px-5 py-3 text-sm font-semibold text-ink transition hover:bg-amber-300"
+              >
+                Pay Now
+              </button>
+              <a
+                href="#"
+                data-wa-link
+                data-message="Habari Paul, naomba nichati kabla ya kujiunga na Part-Time Business Coaching."
+                class="inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+              >
+                Chat First
+              </a>
+            </div>
+          </article>
+
+          <article class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-soft">
+            <span class="inline-flex rounded-full bg-rose-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-rose-900">Premium / Application</span>
+            <h3 class="mt-4 font-display text-2xl font-bold text-ink">Private Mentorship Intake</h3>
+            <p class="mt-2 text-sm font-semibold text-slate-500">Who it is for: serious clients who want direct strategic support</p>
+            <p class="mt-4 text-sm leading-7 text-slate-600">A premium mentorship path for people who want closer access, personal direction, and a more tailored progression based on their goals and readiness.</p>
+            <div class="mt-5 space-y-2 text-sm text-slate-600">
+              <p><span class="font-semibold text-slate-800">Outcome:</span> Deeper support, more tailored guidance, and a higher-touch relationship.</p>
+              <p><span class="font-semibold text-slate-800">Format:</span> Application, screening call, and premium support path.</p>
+              <p><span class="font-semibold text-slate-800">Price:</span> Application only</p>
+              <p><span class="font-semibold text-slate-800">Payment label:</span> Discuss on WhatsApp or call before payment.</p>
+            </div>
+            <div class="mt-6 flex flex-col gap-3">
+              <button
+                type="button"
+                data-open-offer
+                data-offer-name="Private Mentorship Intake"
+                data-price="Application Only"
+                data-format="Application + strategy call"
+                data-for="Clients seeking premium direct guidance"
+                data-outcome="Understand fit, expectations, and whether premium mentorship is the right next step"
+                data-payment-link="{{ config('brand.payment.links.private_mentorship') }}"
+                data-payment-type="apply"
+                data-payment-methods="WhatsApp consultation|Call booking"
+                data-whatsapp-message="Habari Paul, ningependa kuomba nafasi kwenye Private Mentorship Intake."
+                data-next-steps="You apply first, receive personal direction, and confirm fit before any payment is requested."
+                class="inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-panel"
+              >
+                Apply Now
+              </button>
+              <a href="#" data-call-link class="inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">
+                Book by Call
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-6xl px-4 py-8 md:py-14">
+        <div class="rounded-[32px] border border-slate-200 bg-white p-6 shadow-soft md:p-8">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">How It Works</p>
+              <h2 class="mt-2 font-display text-3xl font-bold text-ink">A simple journey that respects how people actually buy</h2>
+            </div>
+            <a
+              href="#"
+              data-wa-link
+              data-message="Habari Paul, naomba unielekeze hatua ya kununua au kujiunga."
+              class="inline-flex min-h-[48px] items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+            >
+              Need guidance? Chat first
+            </a>
+          </div>
+
+          <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <div class="rounded-[24px] bg-slate-50 p-5">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Step 1</p>
+              <h3 class="mt-3 text-lg font-semibold text-ink">Discover the right offer</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600">Use Quick Actions, browse the offers, or ask directly on WhatsApp if you want help choosing.</p>
+            </div>
+            <div class="rounded-[24px] bg-slate-50 p-5">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Step 2</p>
+              <h3 class="mt-3 text-lg font-semibold text-ink">Chat or buy</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600">Low-ticket offers can go to hosted checkout. Higher-touch offers can begin with a WhatsApp conversation or call.</p>
+            </div>
+            <div class="rounded-[24px] bg-slate-50 p-5">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Step 3</p>
+              <h3 class="mt-3 text-lg font-semibold text-ink">Receive next steps</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600">After payment or reservation, confirmation and onboarding guidance are sent clearly so nobody is left wondering what happens next.</p>
+            </div>
+            <div class="rounded-[24px] bg-slate-50 p-5">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Step 4</p>
+              <h3 class="mt-3 text-lg font-semibold text-ink">Move at your pace</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600">The journey is built for real schedules, which makes it easier to continue consistently over time.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="payments" class="section-anchor mx-auto max-w-6xl px-4 py-8 md:py-14">
+        <div class="grid gap-6 lg:grid-cols-[1fr_0.95fr]">
+          <div class="rounded-[32px] bg-ink p-6 text-white shadow-lift md:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">Payment Info</p>
+            <h2 class="mt-3 font-display text-3xl font-bold">Mobile-money-friendly checkout, with human support close by</h2>
+            <p class="mt-4 text-base leading-8 text-slate-200">
+              Buyers in Tanzania often want both trust and convenience. This page supports direct hosted checkout for selected offers and WhatsApp-assisted purchase for buyers who want clarity first.
+            </p>
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-[24px] border border-white/10 bg-white/10 p-4">
+                <h3 class="text-base font-semibold text-white">Accepted methods</h3>
+                <p class="mt-2 text-sm leading-7 text-slate-200">M-Pesa, Tigo Pesa, Airtel Money, Halo Pesa, card, and bank transfer.</p>
+              </div>
+              <div class="rounded-[24px] border border-white/10 bg-white/10 p-4">
+                <h3 class="text-base font-semibold text-white">Gateway direction</h3>
+                <p class="mt-2 text-sm leading-7 text-slate-200">Frontend placeholders are ready for Selcom, DPO / Direct Pay, Pesapal, AzamPay, or a similar Tanzania-suitable gateway.</p>
+              </div>
+              <div class="rounded-[24px] border border-white/10 bg-white/10 p-4">
+                <h3 class="text-base font-semibold text-white">Secure checkout guidance</h3>
+                <p class="mt-2 text-sm leading-7 text-slate-200">Each offer can point to a hosted checkout link. If a buyer needs help first, WhatsApp remains a visible fallback path.</p>
+              </div>
+              <div class="rounded-[24px] border border-white/10 bg-white/10 p-4">
+                <h3 class="text-base font-semibold text-white">After payment</h3>
+                <p class="mt-2 text-sm leading-7 text-slate-200">The buyer should receive confirmation, the next action, and access details or onboarding guidance right away.</p>
+              </div>
+            </div>
+            <div class="mt-6 rounded-[24px] border border-white/10 bg-white/10 p-4">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">Reassurance</p>
+              <p class="mt-2 text-sm leading-7 text-slate-200">Need help before paying? Chat first. Prefer a call? Tap to call. Want to buy directly? Use the offer card or checkout panel. Lipa kwa urahisi, with clarity.</p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div class="rounded-[32px] border border-slate-200 bg-white p-6 shadow-soft md:p-8">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">What happens next</p>
+              <div class="mt-4 space-y-4">
+                <div class="rounded-[22px] bg-slate-50 p-4">
+                  <h3 class="text-base font-semibold text-ink">1. Choose an offer</h3>
+                  <p class="mt-2 text-sm leading-7 text-slate-600">Each offer card explains who it is for, what it delivers, and whether to buy now, reserve, apply, or chat first.</p>
+                </div>
+                <div class="rounded-[22px] bg-slate-50 p-4">
+                  <h3 class="text-base font-semibold text-ink">2. Pay directly or request help</h3>
+                  <p class="mt-2 text-sm leading-7 text-slate-600">Hosted links are best for low-ticket speed. WhatsApp-assisted payment is available when human support matters more.</p>
+                </div>
+                <div class="rounded-[22px] bg-slate-50 p-4">
+                  <h3 class="text-base font-semibold text-ink">3. Get confirmation and onboarding</h3>
+                  <p class="mt-2 text-sm leading-7 text-slate-600">Confirmation, joining details, or delivery guidance should be sent immediately after verification.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-[32px] border border-slate-200 bg-white p-6 shadow-soft md:p-8">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Laravel setup checklist for contact and payments</p>
+              <div class="mt-4 grid gap-3">
+                <div class="rounded-[22px] bg-slate-50 p-4">
+                  <div class="flex items-center justify-between gap-3">
+                    <code class="text-sm font-semibold text-ink">BRAND_WHATSAPP_NUMBER</code>
+                    <span class="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] {{ $setupStatus['whatsapp'] ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-900' }}">
+                      {{ $setupStatus['whatsapp'] ? 'Configured' : 'Pending' }}
+                    </span>
+                  </div>
+                  <p class="mt-2 text-sm leading-7 text-slate-600">Primary conversion channel for quick questions, assisted purchase, and guided next steps.</p>
+                </div>
+                <div class="rounded-[22px] bg-slate-50 p-4">
+                  <div class="flex items-center justify-between gap-3">
+                    <code class="text-sm font-semibold text-ink">BRAND_PHONE_NUMBER</code>
+                    <span class="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] {{ $setupStatus['phone'] ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-900' }}">
+                      {{ $setupStatus['phone'] ? 'Configured' : 'Pending' }}
+                    </span>
+                  </div>
+                  <p class="mt-2 text-sm leading-7 text-slate-600">Secondary tap-to-call path for visitors who prefer direct voice clarification before committing.</p>
+                </div>
+                <div class="rounded-[22px] bg-slate-50 p-4">
+                  <div class="flex items-center justify-between gap-3">
+                    <code class="text-sm font-semibold text-ink">PAYMENT_LINK_*</code>
+                    <span class="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] {{ $setupStatus['starterKitPayment'] || $setupStatus['workshopPayment'] || $setupStatus['coachingPayment'] || $setupStatus['privateMentorshipPayment'] || $setupStatus['programPayment'] ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-900' }}">
+                      {{ $setupStatus['starterKitPayment'] || $setupStatus['workshopPayment'] || $setupStatus['coachingPayment'] || $setupStatus['privateMentorshipPayment'] || $setupStatus['programPayment'] ? 'Partially Ready' : 'Pending' }}
+                    </span>
+                  </div>
+                  <p class="mt-2 text-sm leading-7 text-slate-600">Hosted checkout URLs for specific offers. If a link is missing, the page falls back to WhatsApp support instead of breaking the flow.</p>
+                </div>
+                <div class="rounded-[22px] bg-slate-50 p-4">
+                  <div class="flex items-center justify-between gap-3">
+                    <code class="text-sm font-semibold text-ink">API_ENDPOINT_CREATE_ORDER / VERIFY / WEBHOOK</code>
+                    <span class="rounded-full bg-slate-200 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-slate-700">Architecture Ready</span>
+                  </div>
+                  <p class="mt-2 text-sm leading-7 text-slate-600">Reserved for gateway integration when you are ready to connect Selcom, DPO, Pesapal, AzamPay, or another supported payment backend.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lead-capture" class="section-anchor mx-auto max-w-6xl px-4 py-8 md:py-14">
+        <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div class="rounded-[32px] border border-slate-200 bg-white p-6 shadow-soft md:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Lead Capture</p>
+            <h2 class="mt-3 font-display text-3xl font-bold text-ink">Not ready to pay today? Leave your details and keep the conversation moving.</h2>
+            <p class="mt-4 text-base leading-8 text-slate-600">
+              The form is intentionally small for mobile users. It captures interest without replacing the primary WhatsApp path.
+            </p>
+            <div class="mt-6 rounded-[24px] bg-slate-50 p-5">
+              <p class="text-sm font-semibold text-ink">Suggested use</p>
+              <p class="mt-2 text-sm leading-7 text-slate-600">
+                Use this when a visitor wants updates, a starter guide, or a follow-up path. For urgent questions or purchase help, WhatsApp is still the fastest channel.
+              </p>
+            </div>
+          </div>
+
+          <div class="rounded-[32px] bg-ink p-6 text-white shadow-lift md:p-8">
+            <form id="leadForm" class="space-y-4" novalidate>
+              <div>
+                <label for="leadName" class="mb-2 block text-sm font-semibold text-white">Name</label>
+                <input
+                  id="leadName"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  class="w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/40"
+                  placeholder="Enter your name"
+                  required
+                >
+                <p id="nameError" class="mt-2 hidden text-sm text-red-300">Please enter your name.</p>
+              </div>
+              <div>
+                <label for="leadEmail" class="mb-2 block text-sm font-semibold text-white">Email</label>
+                <input
+                  id="leadEmail"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  class="w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/40"
+                  placeholder="Enter your email"
+                  required
+                >
+                <p id="emailError" class="mt-2 hidden text-sm text-red-300">Please enter a valid email address.</p>
+              </div>
+              <div class="rounded-[22px] border border-white/10 bg-white/10 px-4 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">Current interest</p>
+                <p id="leadInterest" class="mt-2 text-sm leading-7 text-white/90">General inquiry</p>
+              </div>
+              <button
+                type="submit"
+                id="leadSubmit"
+                class="inline-flex min-h-[54px] w-full items-center justify-center rounded-2xl bg-accent px-5 py-3 text-base font-semibold text-ink transition hover:bg-amber-300"
+              >
+                Request Follow-Up
+              </button>
+              <p class="text-sm leading-7 text-white/70">
+                By submitting, you are asking for a follow-up or resource update. For fastest support, you can still
+                <a
+                  href="#"
+                  data-wa-link
+                  data-message="Habari Paul, nimetuma details zangu kwenye website yako na naomba nifuatiliwe."
+                  class="font-semibold text-white underline underline-offset-4"
+                >
+                  chat on WhatsApp
+                </a>.
+              </p>
+            </form>
+
+            <div id="leadState" class="mt-5 hidden rounded-[24px] bg-white px-5 py-4 text-slate-900" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="section-anchor mx-auto max-w-6xl px-4 py-8 md:py-14">
+        <div class="rounded-[32px] border border-slate-200 bg-white p-6 shadow-soft md:p-8">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">FAQ</p>
+              <h2 class="mt-2 font-display text-3xl font-bold text-ink">Quick answers to the most common questions</h2>
+            </div>
+            <a
+              href="#"
+              data-wa-link
+              data-message="Habari Paul, nina swali ambalo halipo kwenye FAQ yako."
+              class="inline-flex min-h-[48px] items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+            >
+              Ask a Different Question
+            </a>
+          </div>
+
+          <div class="mt-6 grid gap-4">
+            <details class="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
+              <summary class="cursor-pointer text-base font-semibold text-ink">Can I do this part-time?</summary>
+              <p class="mt-3 text-sm leading-7 text-slate-600">Yes. The website and offers are positioned for people who want to build gradually while managing current responsibilities. The point is not to disrupt life, but to grow with structure.</p>
+            </details>
+            <details class="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
+              <summary class="cursor-pointer text-base font-semibold text-ink">Do I need experience?</summary>
+              <p class="mt-3 text-sm leading-7 text-slate-600">Not necessarily. Some offers are designed specifically for beginners who need a clear starting point, guidance, and simple next steps.</p>
+            </details>
+            <details class="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
+              <summary class="cursor-pointer text-base font-semibold text-ink">How do payments work?</summary>
+              <p class="mt-3 text-sm leading-7 text-slate-600">Depending on the offer, you either use a hosted checkout link, reserve your spot, or chat first on WhatsApp. The page is built to support both direct payment and assisted checkout guidance.</p>
+            </details>
+            <details class="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
+              <summary class="cursor-pointer text-base font-semibold text-ink">Which payment methods are accepted?</summary>
+              <p class="mt-3 text-sm leading-7 text-slate-600">The architecture supports M-Pesa, Tigo Pesa, Airtel Money, Halo Pesa, card, and bank transfer, depending on the final gateway setup and offer flow.</p>
+            </details>
+            <details class="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
+              <summary class="cursor-pointer text-base font-semibold text-ink">What happens after payment?</summary>
+              <p class="mt-3 text-sm leading-7 text-slate-600">You should receive confirmation, a next-step message, and either digital delivery details or onboarding guidance. This page explains that clearly to reduce uncertainty.</p>
+            </details>
+            <details class="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
+              <summary class="cursor-pointer text-base font-semibold text-ink">Do I need to chat first?</summary>
+              <p class="mt-3 text-sm leading-7 text-slate-600">No. For some offers, direct checkout is available. But many people prefer to chat first, and the page keeps that path visible because it is a natural buying behavior.</p>
+            </details>
+            <details class="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
+              <summary class="cursor-pointer text-base font-semibold text-ink">Is this beginner-friendly?</summary>
+              <p class="mt-3 text-sm leading-7 text-slate-600">Yes. The tone, offer structure, and support paths are designed to reduce overwhelm, answer basic questions, and help people choose a reasonable next step.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-6xl px-4 py-8 md:py-14">
+        <div class="rounded-[34px] bg-panel p-6 text-white shadow-lift md:p-10">
+          <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">Final Call To Action</p>
+              <h2 class="mt-3 max-w-3xl font-display text-3xl font-bold md:text-4xl">If you are ready to start, the next step should feel simple.</h2>
+              <p class="mt-4 max-w-2xl text-base leading-8 text-slate-200">
+                Chat on WhatsApp for quick guidance. Call if you want direct clarity. Browse the offer catalog if you prefer to decide at your own pace. No pressure. Clear next steps.
+              </p>
+            </div>
+            <div class="rounded-[28px] bg-white p-5 text-slate-900 shadow-soft">
+              <div class="grid gap-3">
+                <a
+                  href="#"
+                  data-wa-link
+                  data-message="Habari Paul, niko tayari kuanza. Naomba uniongoze next step."
+                  class="inline-flex min-h-[54px] items-center justify-center rounded-2xl bg-whatsapp px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-500"
+                >
+                  Chat on WhatsApp
+                </a>
+                <a href="#" data-call-link class="inline-flex min-h-[54px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">
+                  Call Now
+                </a>
+                <a href="#offers" class="inline-flex min-h-[54px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">
+                  Browse Offers
+                </a>
+              </div>
+              <p class="mt-4 text-sm leading-7 text-slate-600">Unsure where to begin? Start with WhatsApp and ask one simple question.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white">
+      <div class="mx-auto max-w-6xl px-4 py-8">
+        <div class="grid gap-6 md:grid-cols-[1fr_auto] md:items-start">
+          <div>
+            <p class="font-display text-xl font-bold text-ink">Paul Mwaikenda</p>
+            <p class="mt-2 text-sm leading-7 text-slate-600">
+              Part-Time Business &amp; Entrepreneurs Coach |
+              <a href="{{ config('brand.instagram_url') }}" target="_blank" rel="noopener noreferrer" class="font-semibold text-ink underline underline-offset-4">
+                Instagram: {{ config('brand.instagram_handle') }}
+              </a>
+            </p>
+            <p class="mt-4 text-sm leading-7 text-slate-500">Support contact paths are built around WhatsApp first, with call and lead capture as secondary support routes.</p>
+          </div>
+          <div class="grid gap-2 text-sm text-slate-500">
+            <p>&copy; 2026 Paul Mwaikenda. All rights reserved.</p>
+            <p>Independent distributor / coach notice: any offer, program, or partner arrangement should be clarified before payment.</p>
+            <p>Results vary. This website does not make income guarantees.</p>
+            <p>Payment note: hosted checkout links and API endpoints in this file are placeholders until production credentials are added.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="checkoutModal" class="fixed inset-0 z-[70] hidden">
+      <div class="absolute inset-0 bg-slate-950/70" data-close-checkout></div>
+      <div class="absolute inset-x-0 bottom-0 max-h-[90vh] overflow-y-auto rounded-t-[30px] bg-white p-5 shadow-lift md:bottom-4 md:right-4 md:left-auto md:top-4 md:w-[28rem] md:rounded-[30px]">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Checkout Summary</p>
+            <h2 id="checkoutName" class="mt-2 font-display text-2xl font-bold text-ink">Offer Name</h2>
+          </div>
+          <button
+            type="button"
+            data-close-checkout
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-600"
+            aria-label="Close checkout summary"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 6l12 12M18 6L6 18"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="mt-5 space-y-4">
+          <div class="rounded-[24px] bg-slate-50 p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Who it is for</p>
+            <p id="checkoutFor" class="mt-2 text-sm leading-7 text-slate-600"></p>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <div class="rounded-[24px] bg-slate-50 p-4">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Format</p>
+              <p id="checkoutFormat" class="mt-2 text-sm leading-7 text-slate-600"></p>
+            </div>
+            <div class="rounded-[24px] bg-slate-50 p-4">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Investment</p>
+              <p id="checkoutPrice" class="mt-2 text-sm font-semibold text-ink"></p>
+            </div>
+          </div>
+          <div class="rounded-[24px] bg-slate-50 p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Clear outcome</p>
+            <p id="checkoutOutcome" class="mt-2 text-sm leading-7 text-slate-600"></p>
+          </div>
+          <div class="rounded-[24px] bg-slate-50 p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Supported payment methods</p>
+            <div id="checkoutMethods" class="mt-3 flex flex-wrap gap-2"></div>
+          </div>
+          <div class="rounded-[24px] border border-emerald-200 bg-emerald-50 p-4">
+            <p class="text-sm font-semibold text-emerald-900">Need help? Chat first.</p>
+            <p class="mt-2 text-sm leading-7 text-emerald-800">Secure checkout guidance, mobile money support, and clear next steps remain available even if you prefer to ask before paying.</p>
+          </div>
+          <div class="rounded-[24px] bg-slate-50 p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">What happens next</p>
+            <p id="checkoutNextSteps" class="mt-2 text-sm leading-7 text-slate-600"></p>
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-3">
+          <button
+            type="button"
+            id="checkoutPrimary"
+            class="inline-flex min-h-[54px] items-center justify-center rounded-2xl bg-accent px-5 py-3 text-base font-semibold text-ink transition hover:bg-amber-300"
+          >
+            Continue
+          </button>
+          <a
+            href="#"
+            id="checkoutSupport"
+            data-wa-link
+            data-message="Habari Paul, ningependa msaada kabla ya kulipia."
+            class="inline-flex min-h-[54px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+          >
+            Chat on WhatsApp Instead
+          </a>
+        </div>
+
+        <div id="checkoutStatus" class="mt-4 hidden rounded-[20px] border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-900" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="fixed inset-x-4 bottom-4 z-40 sm:hidden">
+      <div class="grid grid-cols-2 gap-3 rounded-[24px] border border-white/70 bg-white/95 p-3 shadow-lift backdrop-blur">
+        <a
+          href="#"
+          data-wa-link
+          data-message="Habari Paul, nimetoka kwenye website yako na nataka kuanza."
+          class="inline-flex min-h-[54px] items-center justify-center rounded-2xl bg-whatsapp px-4 py-3 text-sm font-semibold text-white"
+        >
+          WhatsApp
+        </a>
+        <a href="#" data-call-link class="inline-flex min-h-[54px] items-center justify-center rounded-2xl border border-slate-300 px-4 py-3 text-sm font-semibold text-slate-700">
+          Call
+        </a>
+      </div>
+    </div>
+
+    <div id="toast" class="pointer-events-none fixed left-1/2 top-5 z-[90] hidden -translate-x-1/2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white shadow-lift"></div>
+
+    <script>
+      /*
+        Contact and payment setup now comes from Laravel config/brand.php and .env.
+        Update BRAND_WHATSAPP_NUMBER, BRAND_PHONE_NUMBER, and PAYMENT_LINK_* values there.
+      */
+      const SITE_CONFIG = {{ \Illuminate\Support\Js::from($siteConfig) }};
+
+      const state = {
+        currentOffer: null
+      };
+
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const toast = document.getElementById("toast");
+      const modal = document.getElementById("checkoutModal");
+      const checkoutStatus = document.getElementById("checkoutStatus");
+      const checkoutPrimary = document.getElementById("checkoutPrimary");
+      const checkoutSupport = document.getElementById("checkoutSupport");
+      const leadInterest = document.getElementById("leadInterest");
+      const leadForm = document.getElementById("leadForm");
+      const leadState = document.getElementById("leadState");
+      const leadSubmit = document.getElementById("leadSubmit");
+      const leadName = document.getElementById("leadName");
+      const leadEmail = document.getElementById("leadEmail");
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+
+      const isPlaceholder = (value) =>
+        !value || /[A-Z_]{4,}/.test(value) || value.includes("PLACEHOLDER");
+
+      const digitsOnly = (value) => (value || "").replace(/\D+/g, "");
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.remove("hidden");
+        window.clearTimeout(showToast.timer);
+        showToast.timer = window.setTimeout(() => {
+          toast.classList.add("hidden");
+        }, 2800);
+      }
+
+      function buildWhatsAppUrl(message) {
+        const number = digitsOnly(SITE_CONFIG.whatsappNumber);
+        if (!number || isPlaceholder(SITE_CONFIG.whatsappNumber)) return null;
+        const text = encodeURIComponent(message || "Habari Paul, nimetoka kwenye website yako.");
+        return "https://wa.me/" + number + "?text=" + text;
+      }
+
+      function buildCallUrl() {
+        if (!SITE_CONFIG.phoneNumber || isPlaceholder(SITE_CONFIG.phoneNumber)) return null;
+        return "tel:" + SITE_CONFIG.phoneNumber;
+      }
+
+      function wireContactLinks() {
+        document.querySelectorAll("[data-wa-link]").forEach((link) => {
+          const message = link.dataset.message || "Habari Paul, nimetoka kwenye website yako.";
+          const url = buildWhatsAppUrl(message);
+
+          if (url) {
+            link.setAttribute("href", url);
+            link.setAttribute("target", "_blank");
+            link.setAttribute("rel", "noopener noreferrer");
+          } else {
+            link.setAttribute("href", "#");
+            link.removeAttribute("target");
+            link.removeAttribute("rel");
+          }
+
+          link.onclick = (event) => {
+            const currentMessage = link.dataset.message || "Habari Paul, nimetoka kwenye website yako.";
+            if (!buildWhatsAppUrl(currentMessage)) {
+              event.preventDefault();
+              showToast("WhatsApp is not configured yet. Add BRAND_WHATSAPP_NUMBER in .env.");
+            }
+          };
+        });
+
+        document.querySelectorAll("[data-call-link]").forEach((link) => {
+          const url = buildCallUrl();
+          if (url) {
+            link.setAttribute("href", url);
+          } else {
+            link.setAttribute("href", "#");
+          }
+
+          link.onclick = (event) => {
+            if (!buildCallUrl()) {
+              event.preventDefault();
+              showToast("Phone calling is not configured yet. Add BRAND_PHONE_NUMBER in .env.");
+            }
+          };
+        });
+      }
+
+      function setMenu(open) {
+        mobileMenu.classList.toggle("hidden", !open);
+        menuToggle.setAttribute("aria-expanded", String(open));
+      }
+
+      menuToggle.addEventListener("click", () => {
+        const open = menuToggle.getAttribute("aria-expanded") !== "true";
+        setMenu(open);
+      });
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => setMenu(false));
+      });
+
+      function openCheckout(offerData) {
+        state.currentOffer = offerData;
+        document.getElementById("checkoutName").textContent = offerData.name;
+        document.getElementById("checkoutFor").textContent = offerData.for;
+        document.getElementById("checkoutFormat").textContent = offerData.format;
+        document.getElementById("checkoutPrice").textContent = offerData.price;
+        document.getElementById("checkoutOutcome").textContent = offerData.outcome;
+        document.getElementById("checkoutNextSteps").textContent = offerData.nextSteps;
+        checkoutSupport.dataset.message = offerData.whatsappMessage;
+        leadInterest.textContent = offerData.name;
+        checkoutStatus.classList.add("hidden");
+        checkoutStatus.textContent = "";
+
+        const methodsContainer = document.getElementById("checkoutMethods");
+        methodsContainer.innerHTML = "";
+        offerData.paymentMethods.forEach((method) => {
+          const chip = document.createElement("span");
+          chip.className = "rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-slate-600";
+          chip.textContent = method;
+          methodsContainer.appendChild(chip);
+        });
+
+        const primaryLabels = {
+          hosted: "Proceed to Secure Checkout",
+          reserve: "Reserve / Continue",
+          whatsapp: "Request on WhatsApp",
+          apply: "Apply on WhatsApp"
+        };
+
+        checkoutPrimary.textContent = primaryLabels[offerData.paymentType] || "Continue";
+        modal.classList.remove("hidden");
+        document.body.classList.add("no-scroll");
+        wireContactLinks();
+      }
+
+      function closeCheckout() {
+        modal.classList.add("hidden");
+        document.body.classList.remove("no-scroll");
+      }
+
+      document.querySelectorAll("[data-open-offer]").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+          const offerData = {
+            name: button.dataset.offerName,
+            price: button.dataset.price,
+            format: button.dataset.format,
+            for: button.dataset.for,
+            outcome: button.dataset.outcome,
+            paymentLink: button.dataset.paymentLink,
+            paymentType: button.dataset.paymentType,
+            whatsappMessage: button.dataset.whatsappMessage,
+            nextSteps: button.dataset.nextSteps,
+            paymentMethods: (button.dataset.paymentMethods || "").split("|").filter(Boolean)
+          };
+
+          openCheckout(offerData);
+        });
+      });
+
+      document.querySelectorAll("[data-close-checkout]").forEach((element) => {
+        element.addEventListener("click", closeCheckout);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+          closeCheckout();
+        }
+      });
+
+      checkoutPrimary.addEventListener("click", () => {
+        if (!state.currentOffer) return;
+
+        const offer = state.currentOffer;
+        const whatsappUrl = buildWhatsAppUrl(offer.whatsappMessage);
+
+        if (offer.paymentType === "hosted") {
+          if (/^https?:\/\//i.test(offer.paymentLink)) {
+            window.open(offer.paymentLink, "_blank", "noopener,noreferrer");
+            return;
+          }
+          checkoutStatus.textContent = "This checkout link is not configured yet. Add the relevant PAYMENT_LINK_* value in .env or continue on WhatsApp below.";
+          checkoutStatus.classList.remove("hidden");
+          return;
+        }
+
+        if (offer.paymentType === "reserve" || offer.paymentType === "whatsapp" || offer.paymentType === "apply") {
+          if (whatsappUrl) {
+            window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+          } else {
+            checkoutStatus.textContent = "WhatsApp is not configured yet. Add BRAND_WHATSAPP_NUMBER in .env to activate this action.";
+            checkoutStatus.classList.remove("hidden");
+          }
+        }
+      });
+
+      function validateLeadForm() {
+        const name = leadName.value.trim();
+        const email = leadEmail.value.trim();
+        const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        const nameValid = name.length > 1;
+        const emailValid = validEmail;
+
+        nameError.classList.toggle("hidden", nameValid);
+        emailError.classList.toggle("hidden", emailValid);
+        leadName.setAttribute("aria-invalid", String(!nameValid));
+        leadEmail.setAttribute("aria-invalid", String(!emailValid));
+
+        return nameValid && emailValid;
+      }
+
+      leadForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!validateLeadForm()) {
+          showToast("Please complete the form before submitting.");
+          return;
+        }
+
+        leadSubmit.disabled = true;
+        leadSubmit.textContent = "Submitting...";
+        leadState.classList.remove("hidden");
+        leadState.className = "mt-5 rounded-[24px] border border-white/10 bg-white/10 px-5 py-4 text-white";
+        leadState.textContent = "Submitting your details for follow-up.";
+
+        const payload = {
+          name: leadName.value.trim(),
+          email: leadEmail.value.trim(),
+          interest: leadInterest.textContent,
+          source: "website"
+        };
+
+        fetch(SITE_CONFIG.leadCaptureEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content")
+          },
+          body: JSON.stringify(payload)
+        })
+          .then(async (response) => {
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+              throw { status: response.status, data };
+            }
+
+            return data;
+          })
+          .then((data) => {
+            leadSubmit.disabled = false;
+            leadSubmit.textContent = "Request Follow-Up";
+            leadState.className = "mt-5 rounded-[24px] bg-white px-5 py-4 text-slate-900";
+            leadState.innerHTML =
+              "<p class=\"text-base font-semibold text-ink\">" + (data.message || SITE_CONFIG.leadSuccessMessage) + "</p>" +
+              "<p class=\"mt-2 text-sm leading-7 text-slate-600\">Your interest has been captured in Laravel, so follow-up can now continue through a real backend flow. For faster support, continue on WhatsApp now.</p>" +
+              "<a href=\"#\" data-wa-link data-message=\"Habari Paul, nimetuma details zangu kwenye website yako na naomba unifuatilie.\" class=\"mt-4 inline-flex min-h-[48px] items-center rounded-full bg-whatsapp px-4 py-2 text-sm font-semibold text-white\">Continue on WhatsApp</a>";
+            wireContactLinks();
+            leadForm.reset();
+            leadInterest.textContent = "General inquiry";
+          })
+          .catch((error) => {
+            leadSubmit.disabled = false;
+            leadSubmit.textContent = "Request Follow-Up";
+
+            const errors = error?.data?.errors || {};
+            const firstError = Object.values(errors).flat()[0];
+
+            leadState.className = "mt-5 rounded-[24px] border border-red-200 bg-red-50 px-5 py-4 text-red-900";
+            leadState.textContent = firstError || "We could not submit your request right now. Please try again or continue on WhatsApp.";
+
+            nameError.classList.toggle("hidden", !errors.name);
+            emailError.classList.toggle("hidden", !errors.email);
+          });
+      });
+
+      // ── Video Lightbox ──────────────────────────────────
+      (function () {
+        const lightbox = document.getElementById('videoLightbox');
+        const lbVideo  = document.getElementById('lbVideo');
+        const lbTitle  = document.getElementById('lbTitle');
+        const lbClose  = document.getElementById('lbClose');
+
+        function openLightbox(src, title) {
+          lbVideo.src = src;
+          lbTitle.textContent = title || '';
+          lightbox.classList.add('open');
+          document.body.classList.add('no-scroll');
+          lbVideo.play().catch(() => {});
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove('open');
+          document.body.classList.remove('no-scroll');
+          lbVideo.pause();
+          lbVideo.src = '';
+        }
+
+        document.querySelectorAll('.video-card').forEach(function (card) {
+          function activate() {
+            openLightbox(card.dataset.videoSrc, card.dataset.videoTitle);
+          }
+          card.addEventListener('click', activate);
+          card.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+          });
+        });
+
+        lbClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function (e) {
+          if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+        });
+      })();
+
+      wireContactLinks();
+    </script>
+  </body>
+</html>

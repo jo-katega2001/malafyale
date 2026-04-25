@@ -498,7 +498,6 @@ return [
         'copyright' => 'Hakimiliki 2026 Paul Mwaikenda. Haki zote zimehifadhiwa.',
         'disclaimers' => [
             'Ofa, ada, na namna ya kupata huduma huthibitishwa kabla ya malipo.',
-            'Matokeo hutofautiana. Website hii haitoi ahadi ya kipato kilichohakikishwa.',
             'Mshirika yeyote, distributor, au mpangilio maalum hufafanuliwa kabla ya mnunuzi kuamua.',
         ],
     ],
