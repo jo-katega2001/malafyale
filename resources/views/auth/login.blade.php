@@ -56,7 +56,7 @@
                             autocomplete="email"
                             required
                             class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-slate-500 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition"
-                            placeholder="admin@mwalafyale.com"
+                            placeholder="admin@malafyale.com"
                         >
                     </div>
                     <div>
