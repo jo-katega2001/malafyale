@@ -542,11 +542,11 @@
     </style>
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@@context": "https://schema.org",
+      "@@graph": [
         {
-          "@type": "Person",
-          "@id": "{{ url('/') }}#person",
+          "@@type": "Person",
+          "@@id": "{{ url('/') }}#person",
           "name": "{{ $page['header']['brand_name'] }}",
           "jobTitle": "{{ $page['header']['brand_role'] }}",
           "url": "{{ url('/') }}",
@@ -556,13 +556,13 @@
           ]
         },
         {
-          "@type": "WebSite",
-          "@id": "{{ url('/') }}#website",
+          "@@type": "WebSite",
+          "@@id": "{{ url('/') }}#website",
           "url": "{{ url('/') }}",
           "name": "{{ $page['header']['brand_name'] }}",
           "inLanguage": "{{ $locale }}",
           "publisher": {
-            "@id": "{{ url('/') }}#person"
+            "@@id": "{{ url('/') }}#person"
           }
         }
       ]
