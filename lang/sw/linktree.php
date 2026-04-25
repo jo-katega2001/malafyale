@@ -10,7 +10,7 @@ return [
         'meeting' => 'Panga Mkutano wa Kibiashara Nami (Mtandaoni -...',
         'weight_loss' => 'Unataka Kupunguza Uzito? Agiza C9 Hapa',
         'contact' => 'Wasiliana Nami',
-        'facebook' => 'Facebook Yangu',
+        'instagram' => 'Instagram Yangu',
     ],
     'footer' => [
         'cookie' => 'Mapendeleo ya Vidakuzi',
@@ -24,7 +24,7 @@ return [
         'meeting' => 'Habari Mr Paul Mwaikenda, nataka kupanga mkutano wa kibiashara nawe.',
         'weight_loss' => 'Habari Mr Paul Mwaikenda, nataka kuagiza C9 kwa ajili ya kupunguza uzito.',
         'contact' => 'Habari Mr Paul Mwaikenda, ningependa kuwasiliana nawe.',
-        'facebook' => 'Habari Mr Paul Mwaikenda, naomba link ya Facebook yako.',
+        'instagram' => 'Habari Mr Paul Mwaikenda, naomba link ya Instagram yako.',
     ],
     'videos_page' => [
         'title' => 'Hadithi Yangu ya Mafanikio | Video',

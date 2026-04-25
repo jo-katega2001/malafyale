@@ -10,7 +10,7 @@ return [
         'meeting' => 'Schedule A Business Meeting With ME (Online -...',
         'weight_loss' => 'Want To Lose Weight? Order C9 Here',
         'contact' => 'Contact ME',
-        'facebook' => 'My Facebook',
+        'instagram' => 'My Instagram',
     ],
     'footer' => [
         'cookie' => 'Cookie Preferences',
@@ -24,7 +24,7 @@ return [
         'meeting' => 'Hello Mr Paul Mwaikenda, I want to schedule a business meeting with you.',
         'weight_loss' => 'Hello Mr Paul Mwaikenda, I want to order C9 for weight loss.',
         'contact' => 'Hello Mr Paul Mwaikenda, I would like to connect with you.',
-        'facebook' => 'Hello Mr Paul Mwaikenda, what is your Facebook link?',
+        'instagram' => 'Hello Mr Paul Mwaikenda, what is your Instagram link?',
     ],
     'videos_page' => [
         'title' => 'My Success Story | Videos',
