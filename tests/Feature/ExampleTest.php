@@ -53,4 +53,52 @@ class ExampleTest extends TestCase
             ->assertSee('Jenga kipato cha ziada bila kuacha kazi inayokutegemeza sasa.')
             ->assertSee('Siku 90 za Shughuli Zinazozalisha Kipato');
     }
+
+    public function test_public_section_endpoints_render_clean_section_urls(): void
+    {
+        $sections = [
+            '/request-callback' => 'lead-capture',
+            '/quick-actions' => 'quick-actions',
+            '/about' => 'about',
+            '/audience' => 'audience-fit',
+            '/program' => 'featured-program',
+            '/offers' => 'offers',
+            '/payments' => 'payments',
+            '/videos' => 'intro-video',
+            '/faq' => 'faq',
+            '/start' => 'start-now',
+        ];
+
+        foreach ($sections as $path => $anchor) {
+            $response = $this->get($path);
+
+            $response
+                ->assertOk()
+                ->assertSee('id="' . $anchor . '"', false)
+                ->assertSee('<link rel="canonical" href="http://localhost' . $path . '">', false);
+        }
+    }
+
+    public function test_section_tracking_cookie_is_hardened(): void
+    {
+        $response = $this->get('/offers');
+
+        $cookie = collect($response->headers->getCookies())
+            ->first(fn ($cookie) => $cookie->getName() === 'last_visited_section');
+
+        $this->assertNotNull($cookie);
+        $this->assertTrue($cookie->isHttpOnly());
+        $this->assertSame('strict', strtolower($cookie->getSameSite()));
+        $this->assertFalse($cookie->isSecure());
+    }
+
+    public function test_swahili_section_endpoints_render_localized_sections(): void
+    {
+        $response = $this->get('/sw/videos');
+
+        $response
+            ->assertOk()
+            ->assertSee('id="intro-video"', false)
+            ->assertSee('Jenga kipato cha ziada bila kuacha kazi inayokutegemeza sasa.');
+    }
 }

@@ -7,45 +7,75 @@ use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\LeadController;
 use App\Http\Middleware\TrackPageVisit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
 // Public homepage with visitor tracking
-Route::get('/', function (Request $request) {
-    $request->session()->put('locale', 'en');
-    app()->setLocale('en');
+$renderHome = function (
+    Request $request,
+    string $locale,
+    ?string $sectionName = null,
+    ?string $sectionAnchor = null
+) {
+    $request->session()->put('locale', $locale);
+    app()->setLocale($locale);
 
-    return view('home');
-})->middleware(TrackPageVisit::class)->name('home');
+    return response()->view('home', [
+        'sectionName' => $sectionName,
+        'sectionAnchor' => $sectionAnchor,
+    ]);
+};
 
-Route::get('/sw', function (Request $request) {
-    $request->session()->put('locale', 'sw');
-    app()->setLocale('sw');
+Route::get('/', fn (Request $request) => $renderHome($request, 'en'))
+    ->middleware(TrackPageVisit::class)
+    ->name('home');
 
-    return view('home');
-})->middleware(TrackPageVisit::class)->name('home.sw');
+Route::get('/sw', fn (Request $request) => $renderHome($request, 'sw'))
+    ->middleware(TrackPageVisit::class)
+    ->name('home.sw');
 
 // Lead capture API
 Route::post('/lead-capture', [LeadController::class, 'store'])->name('leads.store');
 
-// Section endpoints with cookie tracking
+// Section endpoints with hardened cookie tracking
 $sections = [
+    'request-callback' => 'lead-capture',
+    'quick-actions' => 'quick-actions',
     'about' => 'about',
+    'audience' => 'audience-fit',
     'program' => 'featured-program',
     'offers' => 'offers',
     'payments' => 'payments',
     'videos' => 'intro-video',
     'faq' => 'faq',
+    'start' => 'start-now',
     'kyc' => 'lead-capture',
 ];
 
-foreach ($sections as $name => $anchor) {
-    Route::get('/' . $name, function () use ($name, $anchor) {
-        return redirect('/#' . $anchor)->cookie('last_visited_section', $name, 1440);
-    })->name('section.' . $name);
+$sectionCookie = function (string $name) {
+    return Cookie::make(
+        'last_visited_section',
+        $name,
+        1440,
+        '/',
+        null,
+        app()->environment('production'),
+        true,
+        false,
+        'Strict'
+    );
+};
 
-    Route::get('/sw/' . $name, function () use ($name, $anchor) {
-        return redirect('/sw#' . $anchor)->cookie('last_visited_section', $name, 1440);
-    })->name('section.sw.' . $name);
+foreach ($sections as $name => $anchor) {
+    Route::get('/' . $name, function (Request $request) use ($renderHome, $sectionCookie, $name, $anchor) {
+        return $renderHome($request, 'en', $name, $anchor)
+            ->withCookie($sectionCookie($name));
+    })->middleware(TrackPageVisit::class)->name('section.' . $name);
+
+    Route::get('/sw/' . $name, function (Request $request) use ($renderHome, $sectionCookie, $name, $anchor) {
+        return $renderHome($request, 'sw', $name, $anchor)
+            ->withCookie($sectionCookie($name));
+    })->middleware(TrackPageVisit::class)->name('section.sw.' . $name);
 }
 
 // Auth routes

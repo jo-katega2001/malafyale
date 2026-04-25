@@ -3,8 +3,28 @@
     $brandConfig = config('brand');
     $locale = app()->getLocale();
     $isSw = $locale === 'sw';
-    $canonicalUrl = $isSw ? url('/sw') : url('/');
-    $alternateUrl = $isSw ? route('home') : route('home.sw');
+    $sectionName = $sectionName ?? null;
+    $sectionAnchor = $sectionAnchor ?? null;
+    $sectionRoute = fn (string $name) => route($isSw ? 'section.sw.' . $name : 'section.' . $name);
+    $sectionUrls = [
+        '#lead-capture' => $sectionRoute('request-callback'),
+        '#quick-actions' => $sectionRoute('quick-actions'),
+        '#about' => $sectionRoute('about'),
+        '#audience-fit' => $sectionRoute('audience'),
+        '#featured-program' => $sectionRoute('program'),
+        '#offers' => $sectionRoute('offers'),
+        '#payments' => $sectionRoute('payments'),
+        '#intro-video' => $sectionRoute('videos'),
+        '#faq' => $sectionRoute('faq'),
+        '#start-now' => $sectionRoute('start'),
+    ];
+    $sectionHref = fn (string $href) => $sectionUrls[$href] ?? $href;
+    $canonicalUrl = $sectionName
+        ? route($isSw ? 'section.sw.' . $sectionName : 'section.' . $sectionName)
+        : ($isSw ? url('/sw') : url('/'));
+    $alternateUrl = $sectionName
+        ? route($isSw ? 'section.' . $sectionName : 'section.sw.' . $sectionName)
+        : ($isSw ? route('home') : route('home.sw'));
     $alternateLocale = $isSw ? 'en' : 'sw';
     $offerLookup = collect($page['offers']['items'])->keyBy('key')->all();
     $offerThemes = [
@@ -111,6 +131,8 @@
         'instagramHandle' => $brandConfig['instagram_handle'],
         'instagramUrl' => $brandConfig['instagram_url'],
         'leadCaptureEndpoint' => route('leads.store'),
+        'leadCaptureUrl' => $sectionUrls['#lead-capture'],
+        'initialSectionAnchor' => $sectionAnchor,
         'defaultLeadInterest' => $isSw ? 'Ujumbe wa jumla' : 'General inquiry',
         'defaultWhatsappMessage' => $page['common']['default_whatsapp_message'],
         'leadSuccessMessage' => __('messages.lead.request_received'),
@@ -510,7 +532,7 @@
     <header class="sticky top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur">
       <div class="mx-auto max-w-6xl px-4">
         <div class="flex h-16 items-center justify-between gap-4">
-          <a href="#main" class="flex items-center gap-3 text-white">
+          <a href="{{ $isSw ? route('home.sw') : route('home') }}" class="flex items-center gap-3 text-white">
             <span class="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-bold text-ink">PM</span>
             <span class="leading-tight">
               <span class="block font-display text-sm font-semibold uppercase tracking-[0.1em] text-white/70">{{ $page['header']['brand_name'] }}</span>
@@ -520,7 +542,7 @@
 
           <nav class="hidden items-center gap-6 text-sm text-white/80 lg:flex">
             @foreach ($page['navigation'] as $item)
-              <a href="{{ $item['href'] }}" class="transition hover:text-white">{{ $item['label'] }}</a>
+              <a href="{{ $sectionHref($item['href']) }}" class="transition hover:text-white">{{ $item['label'] }}</a>
             @endforeach
           </nav>
 
@@ -573,7 +595,7 @@
           <div class="grid gap-3">
             <a href="{{ $alternateUrl }}" hreflang="{{ $alternateLocale }}" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">{{ $page['header']['language_switch'] }}</a>
             @foreach ($page['navigation'] as $item)
-              <a href="{{ $item['href'] }}" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">{{ $item['label'] }}</a>
+              <a href="{{ $sectionHref($item['href']) }}" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">{{ $item['label'] }}</a>
             @endforeach
             <a href="{{ route('portal.login') }}" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">Portal Login</a>
             <a
@@ -619,13 +641,13 @@
                     {{ $page['common']['start_whatsapp'] }}
                   </a>
                   <a
-                    href="#lead-capture"
+                    href="{{ $sectionUrls['#lead-capture'] }}"
                     class="button-sheen inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-accent px-5 py-3 text-base font-semibold text-ink shadow-lg transition hover:bg-accent/90 sm:w-auto"
                   >
                     {{ $page['hero']['request_callback'] }}
                   </a>
                   <a
-                    href="#offers"
+                    href="{{ $sectionUrls['#offers'] }}"
                     class="button-sheen inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-white/15 bg-white/8 px-5 py-3 text-base font-semibold text-white backdrop-blur transition hover:bg-white/12 sm:w-auto"
                   >
                     {{ $page['common']['view_offers'] }}
@@ -659,7 +681,7 @@
                         <p class="mt-2 font-display text-xl font-semibold leading-tight">{{ $page['hero']['profile_name'] }}</p>
                         <p class="mt-2 text-sm leading-6 text-white/70">{{ $page['hero']['profile_role'] }}</p>
                       </div>
-                      <a href="#lead-capture" class="mt-4 inline-flex min-h-[44px] items-center justify-center rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-ink">
+                      <a href="{{ $sectionUrls['#lead-capture'] }}" class="mt-4 inline-flex min-h-[44px] items-center justify-center rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-ink">
                         {{ $page['hero']['request_callback'] }}
                       </a>
                     </figcaption>
@@ -813,7 +835,7 @@
               </a>
             @else
               <a
-                href="{{ $item['href'] }}"
+                href="{{ $sectionHref($item['href']) }}"
                 class="quick-action-card motion-item section-card flex min-h-[11rem] flex-col justify-between rounded-[1.6rem] p-5 text-left md:min-h-[15rem]"
                 data-motion="quick-action"
                 style="--motion-index: {{ $loop->index }}"
@@ -862,7 +884,7 @@
         </div>
       </section>
 
-      <section class="content-section mx-auto max-w-6xl px-4 py-8 md:py-12">
+      <section id="audience-fit" class="content-section section-anchor mx-auto max-w-6xl px-4 py-8 md:py-12">
         <div class="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">{{ $page['audience']['eyebrow'] }}</p>
@@ -929,7 +951,7 @@
                   {{ $page['featured_program']['primary_label'] }}
                 </button>
                 <a
-                  href="#offers"
+                  href="{{ $sectionUrls['#offers'] }}"
                   class="button-sheen inline-flex min-h-[54px] items-center justify-center rounded-2xl border border-white/15 bg-white/8 px-6 py-3.5 text-base font-semibold text-white transition hover:bg-white/12"
                 >
                   {{ $page['featured_program']['secondary_label'] }}
@@ -1133,7 +1155,7 @@
               >
                 {{ $page['common']['start_whatsapp'] }}
               </a>
-              <a href="#offers" class="inline-flex min-h-[50px] items-center justify-center rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10">{{ $page['common']['view_offers'] }}</a>
+              <a href="{{ $sectionUrls['#offers'] }}" class="inline-flex min-h-[50px] items-center justify-center rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10">{{ $page['common']['view_offers'] }}</a>
             </div>
           </div>
         </div>
@@ -1165,7 +1187,7 @@
         </div>
       </section>
 
-      <section class="content-section mx-auto max-w-6xl px-4 py-8 md:py-12">
+      <section id="start-now" class="content-section section-anchor mx-auto max-w-6xl px-4 py-8 md:py-12">
         <div class="motion-item section-card-dark rounded-[2rem] p-6 text-white md:p-10" data-motion="cta" style="--motion-index: 0">
           <div class="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
@@ -1183,7 +1205,7 @@
                 >
                   {{ $page['common']['start_whatsapp'] }}
                 </a>
-                <a href="#offers" class="inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">{{ $page['common']['browse_offers'] }}</a>
+                <a href="{{ $sectionUrls['#offers'] }}" class="inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">{{ $page['common']['browse_offers'] }}</a>
                 <a href="#" data-call-link class="inline-flex min-h-[52px] items-center justify-center rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">{{ $page['common']['call_now'] }}</a>
               </div>
               <p class="mt-4 text-sm leading-7 text-slate-600">{{ $page['cta']['note'] }}</p>
@@ -1397,7 +1419,7 @@
             link.setAttribute("target", "_blank");
             link.setAttribute("rel", "noopener noreferrer");
           } else {
-            link.setAttribute("href", "#lead-capture");
+            link.setAttribute("href", SITE_CONFIG.leadCaptureUrl || "#lead-capture");
             link.removeAttribute("target");
             link.removeAttribute("rel");
           }
@@ -1416,7 +1438,7 @@
           if (url) {
             link.setAttribute("href", url);
           } else {
-            link.setAttribute("href", "#lead-capture");
+            link.setAttribute("href", SITE_CONFIG.leadCaptureUrl || "#lead-capture");
           }
 
           link.onclick = (event) => {
@@ -1681,6 +1703,20 @@
         restTargets.forEach((target) => observer.observe(target));
       }
 
+      function scrollToInitialSection() {
+        if (!SITE_CONFIG.initialSectionAnchor) return;
+
+        const target = document.getElementById(SITE_CONFIG.initialSectionAnchor);
+        if (!target) return;
+
+        window.requestAnimationFrame(() => {
+          target.scrollIntoView({
+            behavior: "auto",
+            block: "start"
+          });
+        });
+      }
+
       function initializeVideoLightbox() {
         const lightbox = document.getElementById("videoLightbox");
         const lightboxVideo = document.getElementById("lightboxVideo");
@@ -1752,7 +1788,18 @@
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const sectionId = entry.target.id;
-              document.cookie = `current_section=${sectionId}; path=/; max-age=3600`;
+              const cookieParts = [
+                `current_section=${encodeURIComponent(sectionId)}`,
+                "path=/",
+                "max-age=3600",
+                "SameSite=Strict"
+              ];
+
+              if (window.location.protocol === "https:") {
+                cookieParts.push("Secure");
+              }
+
+              document.cookie = cookieParts.join("; ");
             }
           });
         }, observerOptions);
@@ -1763,6 +1810,7 @@
       wireContactLinks();
       initializeMotion();
       initializeVideoLightbox();
+      scrollToInitialSection();
     </script>
   </body>
 </html>
