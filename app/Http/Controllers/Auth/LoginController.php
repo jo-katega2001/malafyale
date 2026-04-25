@@ -57,7 +57,7 @@ class LoginController extends Controller
         }
 
         User::updateOrCreate(
-            ['email' => 'admin@mwalafyale.com'],
+            ['email' => 'admin@malafyale.com'],
             [
                 'name' => 'Admin',
                 'password' => Hash::make('password'),
