@@ -280,6 +280,8 @@
           <a href="#">{{ $page['footer']['privacy'] }}</a>
           <span class="text-gray-400">&bull;</span>
           <a href="https://www.instagram.com/malafyalewellness?igsh=YXY0d3hrbWl0azR1" target="_blank" rel="noopener">Instagram</a>
+          <span class="text-gray-400">&bull;</span>
+          <a href="{{ url('/portal/login') }}">Portal</a>
         </div>
       </footer>
     </main>
