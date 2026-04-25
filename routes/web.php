@@ -37,58 +37,12 @@ Route::get('/sw', fn (Request $request) => $renderHome($request, 'sw'))
 // Lead capture API
 Route::post('/lead-capture', [LeadController::class, 'store'])->name('leads.store');
 
-// Section endpoints with hardened cookie tracking
-$sections = [
-    'request-callback' => 'lead-capture',
-    'quick-actions' => 'quick-actions',
-    'about' => 'about',
-    'audience' => 'audience-fit',
-    'program' => 'featured-program',
-    'offers' => 'offers',
-    'payments' => 'payments',
-    'videos' => 'intro-video',
-    'faq' => 'faq',
-    'start' => 'start-now',
-    'kyc' => 'lead-capture',
-];
-
-$sectionCookie = function (string $name) {
-    return Cookie::make(
-        'last_visited_section',
-        $name,
-        1440,
-        '/',
-        null,
-        app()->environment('production'),
-        true,
-        false,
-        'Strict'
-    );
-};
-
-foreach ($sections as $name => $anchor) {
-    Route::get('/' . $name, function (Request $request) use ($renderHome, $sectionCookie, $name, $anchor) {
-        return $renderHome($request, 'en', $name, $anchor)
-            ->withCookie($sectionCookie($name));
-    })->middleware(TrackPageVisit::class)->name('section.' . $name);
-
-    Route::get('/sw/' . $name, function (Request $request) use ($renderHome, $sectionCookie, $name, $anchor) {
-        return $renderHome($request, 'sw', $name, $anchor)
-            ->withCookie($sectionCookie($name));
-    })->middleware(TrackPageVisit::class)->name('section.sw.' . $name);
-}
-
 // Sitemap
-Route::get('/sitemap.xml', function () use ($sections) {
+Route::get('/sitemap.xml', function () {
     $urls = [
         url('/'),
         url('/sw'),
     ];
-
-    foreach (array_keys($sections) as $name) {
-        $urls[] = url('/' . $name);
-        $urls[] = url('/sw/' . $name);
-    }
 
     $xml = '<?xml version="1.0" encoding="UTF-8"?>';
     $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
@@ -97,7 +51,7 @@ Route::get('/sitemap.xml', function () use ($sections) {
         $xml .= '<url>';
         $xml .= '<loc>' . htmlspecialchars($url) . '</loc>';
         $xml .= '<changefreq>weekly</changefreq>';
-        $xml .= '<priority>' . ($url === url('/') || $url === url('/sw') ? '1.0' : '0.8') . '</priority>';
+        $xml .= '<priority>1.0</priority>';
         $xml .= '</url>';
     }
     
