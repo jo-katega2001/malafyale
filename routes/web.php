@@ -37,6 +37,16 @@ Route::get('/sw', fn (Request $request) => $renderHome($request, 'sw'))
 // Lead capture API
 Route::post('/lead-capture', [LeadController::class, 'store'])->name('leads.store');
 
+Route::get('/videos', function (Request $request) {
+    app()->setLocale('en');
+    return view('videos', ['locale' => 'en', 'isSw' => false]);
+})->middleware(TrackPageVisit::class)->name('videos.en');
+
+Route::get('/sw/videos', function (Request $request) {
+    app()->setLocale('sw');
+    return view('videos', ['locale' => 'sw', 'isSw' => true]);
+})->middleware(TrackPageVisit::class)->name('videos.sw');
+
 // Sitemap
 Route::get('/sitemap.xml', function () {
     $urls = [

@@ -26,4 +26,26 @@ return [
         'contact' => 'Hello Mr Paul Mwaikenda, I would like to connect with you.',
         'facebook' => 'Hello Mr Paul Mwaikenda, what is your Facebook link?',
     ],
+    'videos_page' => [
+        'title' => 'My Success Story | Videos',
+        'back' => 'Back to Home',
+        'items' => [
+            [
+                'title' => 'If I can do it, you can too',
+                'src' => 'if-i-can-do-it-you-can-too.mp4'
+            ],
+            [
+                'title' => 'Part-Time Business Leverage Income',
+                'src' => 'part-time-business-leverage-income.mp4'
+            ],
+            [
+                'title' => 'Teach, Train and Coach',
+                'src' => 'teach-train-and-coach.mp4'
+            ],
+            [
+                'title' => 'Training Entrepreneurs and Coaching',
+                'src' => 'training-entrepreneurs-and-coaching.mp4'
+            ]
+        ]
+    ],
 ];

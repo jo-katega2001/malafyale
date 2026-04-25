@@ -26,4 +26,26 @@ return [
         'contact' => 'Habari Mr Paul Mwaikenda, ningependa kuwasiliana nawe.',
         'facebook' => 'Habari Mr Paul Mwaikenda, naomba link ya Facebook yako.',
     ],
+    'videos_page' => [
+        'title' => 'Hadithi Yangu ya Mafanikio | Video',
+        'back' => 'Rudi Mwanzo',
+        'items' => [
+            [
+                'title' => 'Kama mimi nimeweza, na wewe unaweza',
+                'src' => 'if-i-can-do-it-you-can-too.mp4'
+            ],
+            [
+                'title' => 'Kipato cha Ziada kupitia Biashara ya Muda wa Ziada',
+                'src' => 'part-time-business-leverage-income.mp4'
+            ],
+            [
+                'title' => 'Fundisha, Funza na Kuongoza',
+                'src' => 'teach-train-and-coach.mp4'
+            ],
+            [
+                'title' => 'Kufunza Wajasiriamali na Kuongoza',
+                'src' => 'training-entrepreneurs-and-coaching.mp4'
+            ]
+        ]
+    ],
 ];
