@@ -79,6 +79,26 @@ class ExampleTest extends TestCase
         }
     }
 
+    public function test_navbar_includes_every_public_section_endpoint(): void
+    {
+        $response = $this->get('/');
+
+        foreach ([
+            '/request-callback',
+            '/quick-actions',
+            '/about',
+            '/audience',
+            '/program',
+            '/offers',
+            '/payments',
+            '/videos',
+            '/faq',
+            '/start',
+        ] as $path) {
+            $response->assertSee('href="http://localhost' . $path . '"', false);
+        }
+    }
+
     public function test_section_tracking_cookie_is_hardened(): void
     {
         $response = $this->get('/offers');

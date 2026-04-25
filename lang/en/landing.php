@@ -20,6 +20,46 @@ return [
         ['label' => 'Videos', 'href' => '#intro-video'],
         ['label' => 'FAQ', 'href' => '#faq'],
     ],
+    'guided_navigation' => [
+        'primary' => [
+            ['label' => 'Start', 'href' => '#lead-capture'],
+            ['label' => 'Program', 'href' => '#featured-program'],
+            ['label' => 'Offers', 'href' => '#offers'],
+        ],
+        'explore_label' => 'Explore',
+        'explore_eyebrow' => 'Full pathway',
+        'explore_title' => 'Find the right next step',
+        'groups' => [
+            [
+                'label' => 'Start Here',
+                'description' => 'Fast routes for visitors who want guidance before choosing an offer.',
+                'items' => [
+                    ['label' => 'Request Callback', 'href' => '#lead-capture', 'copy' => 'Send your details so Paul can follow up.'],
+                    ['label' => 'Quick Actions', 'href' => '#quick-actions', 'copy' => 'Pick the fastest path for your situation.'],
+                    ['label' => 'Start Now', 'href' => '#start-now', 'copy' => 'Move straight to the final decision point.'],
+                ],
+            ],
+            [
+                'label' => 'Learn First',
+                'description' => 'Context for visitors who need trust, fit, and clarity.',
+                'items' => [
+                    ['label' => 'About Paul', 'href' => '#about', 'copy' => 'Understand the coaching approach.'],
+                    ['label' => 'Who This Fits', 'href' => '#audience-fit', 'copy' => 'See whether this is built for you.'],
+                    ['label' => 'Videos', 'href' => '#intro-video', 'copy' => 'Watch Paul before you decide.'],
+                    ['label' => 'FAQ', 'href' => '#faq', 'copy' => 'Clear the common questions.'],
+                ],
+            ],
+            [
+                'label' => 'Choose & Pay',
+                'description' => 'Offer, program, and payment information for ready buyers.',
+                'items' => [
+                    ['label' => '90-Day Program', 'href' => '#featured-program', 'copy' => 'Review the structured path.'],
+                    ['label' => 'All Offers', 'href' => '#offers', 'copy' => 'Compare available options.'],
+                    ['label' => 'Payments', 'href' => '#payments', 'copy' => 'Understand how buying works.'],
+                ],
+            ],
+        ],
+    ],
     'common' => [
         'skip_to_content' => 'Skip to content',
         'start_whatsapp' => 'Start on WhatsApp',

@@ -6,6 +6,7 @@
     $sectionName = $sectionName ?? null;
     $sectionAnchor = $sectionAnchor ?? null;
     $sectionRoute = fn (string $name) => route($isSw ? 'section.sw.' . $name : 'section.' . $name);
+    $guidedNavigation = $page['guided_navigation'];
     $sectionUrls = [
         '#lead-capture' => $sectionRoute('request-callback'),
         '#quick-actions' => $sectionRoute('quick-actions'),
@@ -540,13 +541,58 @@
             </span>
           </a>
 
-          <nav class="hidden items-center gap-6 text-sm text-white/80 lg:flex">
-            @foreach ($page['navigation'] as $item)
-              <a href="{{ $sectionHref($item['href']) }}" class="transition hover:text-white">{{ $item['label'] }}</a>
+          <nav class="hidden items-center gap-2 text-sm text-white/80 xl:flex" aria-label="Primary navigation">
+            @foreach ($guidedNavigation['primary'] as $item)
+              <a href="{{ $sectionHref($item['href']) }}" class="rounded-full px-3 py-2 font-semibold transition hover:bg-white/10 hover:text-white">{{ $item['label'] }}</a>
             @endforeach
+
+            <div class="group relative">
+              <button
+                type="button"
+                class="inline-flex items-center gap-2 rounded-full px-3 py-2 font-semibold transition hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white"
+                aria-haspopup="true"
+              >
+                {{ $guidedNavigation['explore_label'] }}
+                <svg class="h-4 w-4 transition group-hover:rotate-180 group-focus-within:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                </svg>
+              </button>
+
+              <div class="invisible absolute left-1/2 top-full z-[80] mt-4 w-[min(56rem,calc(100vw-2rem))] -translate-x-1/2 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <div class="rounded-[1.4rem] border border-white/10 bg-ink/95 p-4 text-white shadow-2xl shadow-black/30 ring-1 ring-white/10 backdrop-blur-xl">
+                  <div class="mb-4 flex items-end justify-between gap-4 border-b border-white/10 pb-4">
+                    <div>
+                      <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-accent">{{ $guidedNavigation['explore_eyebrow'] }}</p>
+                      <p class="mt-1 font-display text-lg font-semibold">{{ $guidedNavigation['explore_title'] }}</p>
+                    </div>
+                    <a href="{{ $sectionUrls['#lead-capture'] }}" class="shrink-0 rounded-full bg-accent px-4 py-2 text-xs font-bold text-ink transition hover:bg-amber-300">
+                      {{ $page['hero']['request_callback'] }}
+                    </a>
+                  </div>
+
+                  <div class="grid gap-3 lg:grid-cols-3">
+                    @foreach ($guidedNavigation['groups'] as $group)
+                      <div class="rounded-[1rem] border border-white/10 bg-white/[0.04] p-3">
+                        <p class="font-semibold text-white">{{ $group['label'] }}</p>
+                        <p class="mt-1 text-xs leading-5 text-white/55">{{ $group['description'] }}</p>
+
+                        <div class="mt-3 grid gap-1.5">
+                          @foreach ($group['items'] as $item)
+                            <a href="{{ $sectionHref($item['href']) }}" class="rounded-xl px-3 py-2 transition hover:bg-white/10">
+                              <span class="block text-sm font-semibold text-white">{{ $item['label'] }}</span>
+                              <span class="mt-0.5 block text-xs leading-5 text-white/55">{{ $item['copy'] }}</span>
+                            </a>
+                          @endforeach
+                        </div>
+                      </div>
+                    @endforeach
+                  </div>
+                </div>
+              </div>
+            </div>
           </nav>
 
-          <div class="hidden items-center gap-3 sm:flex">
+          <div class="hidden items-center gap-2 xl:flex">
             <a
               href="{{ $alternateUrl }}"
               hreflang="{{ $alternateLocale }}"
@@ -580,7 +626,7 @@
           <button
             type="button"
             id="menuToggle"
-            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white lg:hidden"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white xl:hidden"
             aria-controls="mobileMenu"
             aria-expanded="false"
             aria-label="{{ $page['header']['mobile_menu'] }}"
@@ -591,12 +637,26 @@
           </button>
         </div>
 
-        <div id="mobileMenu" class="hidden border-t border-white/10 py-4 lg:hidden">
+        <div id="mobileMenu" class="hidden border-t border-white/10 py-4 xl:hidden">
           <div class="grid gap-3">
             <a href="{{ $alternateUrl }}" hreflang="{{ $alternateLocale }}" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">{{ $page['header']['language_switch'] }}</a>
-            @foreach ($page['navigation'] as $item)
-              <a href="{{ $sectionHref($item['href']) }}" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">{{ $item['label'] }}</a>
-            @endforeach
+
+            <div class="grid gap-3">
+              @foreach ($guidedNavigation['groups'] as $group)
+                <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-3">
+                  <p class="px-1 text-xs font-bold uppercase tracking-[0.16em] text-accent">{{ $group['label'] }}</p>
+                  <div class="mt-2 grid gap-2">
+                    @foreach ($group['items'] as $item)
+                      <a href="{{ $sectionHref($item['href']) }}" class="rounded-xl px-3 py-2 text-white/90 transition hover:bg-white/10">
+                        <span class="block font-semibold">{{ $item['label'] }}</span>
+                        <span class="mt-0.5 block text-xs leading-5 text-white/55">{{ $item['copy'] }}</span>
+                      </a>
+                    @endforeach
+                  </div>
+                </div>
+              @endforeach
+            </div>
+
             <a href="{{ route('portal.login') }}" class="rounded-2xl border border-white/10 px-4 py-3 text-white/90 transition hover:bg-white/10">Portal Login</a>
             <a
               href="#"

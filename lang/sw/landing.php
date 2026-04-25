@@ -20,6 +20,46 @@ return [
         ['label' => 'Video', 'href' => '#intro-video'],
         ['label' => 'Maswali', 'href' => '#faq'],
     ],
+    'guided_navigation' => [
+        'primary' => [
+            ['label' => 'Anza', 'href' => '#lead-capture'],
+            ['label' => 'Programu', 'href' => '#featured-program'],
+            ['label' => 'Ofa', 'href' => '#offers'],
+        ],
+        'explore_label' => 'Vinjari',
+        'explore_eyebrow' => 'Njia nzima',
+        'explore_title' => 'Pata hatua sahihi inayofuata',
+        'groups' => [
+            [
+                'label' => 'Anzia Hapa',
+                'description' => 'Njia za haraka kwa wageni wanaotaka mwongozo kabla ya kuchagua ofa.',
+                'items' => [
+                    ['label' => 'Omba Kupigiwa', 'href' => '#lead-capture', 'copy' => 'Tuma taarifa zako ili Paul aweze kukufuatilia.'],
+                    ['label' => 'Hatua za Haraka', 'href' => '#quick-actions', 'copy' => 'Chagua njia ya haraka kulingana na ulipo.'],
+                    ['label' => 'Anza Sasa', 'href' => '#start-now', 'copy' => 'Nenda moja kwa moja kwenye hatua ya uamuzi.'],
+                ],
+            ],
+            [
+                'label' => 'Jifunze Kwanza',
+                'description' => 'Muktadha kwa wageni wanaohitaji uaminifu, ulinganifu, na uwazi.',
+                'items' => [
+                    ['label' => 'Kuhusu Paul', 'href' => '#about', 'copy' => 'Elewa namna ya ushauri wake.'],
+                    ['label' => 'Inamfaa Nani', 'href' => '#audience-fit', 'copy' => 'Angalia kama njia hii imejengwa kwa ajili yako.'],
+                    ['label' => 'Video', 'href' => '#intro-video', 'copy' => 'Mtazame Paul kabla hujaamua.'],
+                    ['label' => 'Maswali', 'href' => '#faq', 'copy' => 'Pata majibu ya maswali ya kawaida.'],
+                ],
+            ],
+            [
+                'label' => 'Chagua & Lipa',
+                'description' => 'Taarifa za ofa, programu, na malipo kwa walio tayari kuanza.',
+                'items' => [
+                    ['label' => 'Programu ya Siku 90', 'href' => '#featured-program', 'copy' => 'Tazama njia yenye mpangilio.'],
+                    ['label' => 'Ofa Zote', 'href' => '#offers', 'copy' => 'Linganisha chaguo zilizopo.'],
+                    ['label' => 'Malipo', 'href' => '#payments', 'copy' => 'Elewa namna ya kulipa.'],
+                ],
+            ],
+        ],
+    ],
     'common' => [
         'skip_to_content' => 'Nenda kwenye maudhui',
         'start_whatsapp' => 'Anza na WhatsApp',
