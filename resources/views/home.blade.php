@@ -587,7 +587,6 @@
                     @foreach ($guidedNavigation['groups'] as $group)
                       <div class="rounded-[1rem] border border-white/10 bg-white/[0.04] p-3">
                         <p class="font-semibold text-white">{{ $group['label'] }}</p>
-                        <p class="mt-1 text-xs leading-5 text-white/55">{{ $group['description'] }}</p>
 
                         <div class="mt-3 grid gap-1.5">
                           @foreach ($group['items'] as $item)
@@ -651,7 +650,7 @@
         </div>
 
         <nav class="-mx-4 border-t border-white/10 py-2" aria-label="Section navigation">
-          <div class="section-rail-scroll flex gap-2 overflow-x-auto px-4 pb-1 md:flex-wrap md:overflow-visible">
+          <div class="section-rail-scroll flex gap-2 overflow-x-auto px-4 pb-1">
             @foreach ($sectionRailLinks as $item)
               @php
                   $isActiveSection = $sectionAnchor === ltrim($item['href'], '#');
@@ -800,7 +799,6 @@
             <div class="bg-ink p-5 text-white md:p-8">
               <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/55">{{ $page['lead_form']['eyebrow'] }}</p>
               <h2 class="mt-3 font-display text-2xl font-semibold tracking-tight md:text-4xl">{{ $page['lead_form']['title'] }}</h2>
-              <p class="mt-4 text-sm leading-7 text-slate-200 md:text-base">{{ $page['lead_form']['description'] }}</p>
 
               <div class="mt-5 grid gap-2">
                 @foreach (array_slice($page['hero']['tags'], 0, 3) as $tag)
@@ -867,7 +865,6 @@
             <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">{{ $page['quick_actions']['eyebrow'] }}</p>
             <h2 class="mt-2 max-w-3xl font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">{{ $page['quick_actions']['title'] }}</h2>
           </div>
-          <p class="max-w-xl text-sm leading-7 text-slate-600">{{ $page['quick_actions']['description'] }}</p>
         </div>
 
         <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -980,7 +977,6 @@
             <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">{{ $page['audience']['eyebrow'] }}</p>
             <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">{{ $page['audience']['title'] }}</h2>
           </div>
-          <p class="max-w-xl text-sm leading-7 text-slate-600">{{ $page['audience']['description'] }}</p>
         </div>
 
         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -999,7 +995,6 @@
             <div class="motion-item" data-motion="cta" style="--motion-index: 0">
               <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/60">{{ $page['featured_program']['eyebrow'] }}</p>
               <h2 class="mt-3 max-w-3xl font-display text-3xl font-semibold tracking-tight md:text-4xl">{{ $page['featured_program']['title'] }}</h2>
-              <p class="mt-4 max-w-2xl text-base leading-8 text-slate-200">{{ $page['featured_program']['description'] }}</p>
 
               <div class="mt-6 flex flex-wrap gap-2">
                 @foreach ($page['featured_program']['chips'] as $chip)
@@ -1070,7 +1065,6 @@
             <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">{{ $page['offers']['eyebrow'] }}</p>
             <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">{{ $page['offers']['title'] }}</h2>
           </div>
-          <p class="max-w-xl text-sm leading-7 text-slate-600">{{ $page['offers']['description'] }}</p>
         </div>
 
         <div class="grid gap-5 xl:grid-cols-3">
@@ -1127,7 +1121,6 @@
           <div class="motion-item section-card-dark rounded-[1.9rem] p-6 text-white md:p-8" data-motion="cta" style="--motion-index: 0">
             <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/60">{{ $page['payment']['eyebrow'] }}</p>
             <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl">{{ $page['payment']['title'] }}</h2>
-            <p class="mt-4 max-w-2xl text-base leading-8 text-slate-200">{{ $page['payment']['description'] }}</p>
 
             <div class="mt-6 grid gap-3 sm:grid-cols-2">
               @foreach ($page['payment']['cards'] as $card)
@@ -1163,7 +1156,6 @@
           <div>
             <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">{{ $page['video_gallery']['eyebrow'] }}</p>
             <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">{{ $page['video_gallery']['title'] }}</h2>
-            <p class="mt-2 max-w-xl text-sm leading-7 text-slate-600">{{ $page['video_gallery']['description'] }}</p>
           </div>
           <a
             href="#"
@@ -1283,7 +1275,6 @@
             <div>
               <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/60">{{ $page['cta']['eyebrow'] }}</p>
               <h2 class="mt-3 max-w-3xl font-display text-3xl font-semibold tracking-tight md:text-4xl">{{ $page['cta']['title'] }}</h2>
-              <p class="mt-4 max-w-2xl text-base leading-8 text-slate-200">{{ $page['cta']['description'] }}</p>
             </div>
             <div class="section-card rounded-[1.5rem] p-5 text-slate-900">
               <div class="grid gap-3">
