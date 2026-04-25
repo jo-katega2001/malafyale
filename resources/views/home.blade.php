@@ -270,6 +270,54 @@
 
       </div>
 
+      <!-- KYC Form -->
+      <div class="mt-10 mb-8 bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+        <h2 class="text-center font-bold text-gray-900 leading-tight mb-3 text-sm tracking-wide">{{ $page['form']['title'] }}</h2>
+        <p class="text-[0.85rem] text-gray-600 mb-6 text-center leading-relaxed font-medium">
+          {{ $page['form']['description'] }}
+        </p>
+
+        <form id="kyc-form" class="space-y-4">
+            @csrf
+            <div>
+              <label class="block text-sm font-bold text-gray-800 mb-1.5">1. {{ $page['form']['fields']['name'] }}</label>
+              <input type="text" name="name" required class="w-full border-b-2 border-gray-300 px-2 py-2 focus:border-gray-900 focus:outline-none text-sm transition-colors bg-transparent">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-bold text-gray-800 mb-1.5">2. {{ $page['form']['fields']['occupation'] }}</label>
+              <input type="text" name="occupation" required class="w-full border-b-2 border-gray-300 px-2 py-2 focus:border-gray-900 focus:outline-none text-sm transition-colors bg-transparent">
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-gray-800 mb-1.5">3. {{ $page['form']['fields']['location'] }}</label>
+              <input type="text" name="location" required class="w-full border-b-2 border-gray-300 px-2 py-2 focus:border-gray-900 focus:outline-none text-sm transition-colors bg-transparent">
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-gray-800 mb-1.5">4. {{ $page['form']['fields']['phone'] }}</label>
+              <input type="text" name="phone" required class="w-full border-b-2 border-gray-300 px-2 py-2 focus:border-gray-900 focus:outline-none text-sm transition-colors bg-transparent">
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-gray-800 mb-1.5">5. {{ $page['form']['fields']['instagram'] }}</label>
+              <input type="text" name="instagram" class="w-full border-b-2 border-gray-300 px-2 py-2 focus:border-gray-900 focus:outline-none text-sm transition-colors bg-transparent">
+            </div>
+
+            <div class="flex justify-between items-center pt-4">
+               <button type="reset" class="text-xs font-semibold text-gray-500 hover:text-gray-900 bg-white border border-gray-200 px-3 py-1.5 rounded transition-colors">{{ $page['form']['clear'] }}</button>
+               <button type="submit" id="submit-btn" class="bg-amber-700 text-white px-6 py-2.5 rounded shadow-sm font-semibold text-sm hover:bg-amber-800 transition-colors">{{ $page['form']['submit'] }}</button>
+            </div>
+        </form>
+
+        <div id="form-success" class="hidden mt-6 bg-green-50 border border-green-200 text-green-800 p-4 rounded-lg text-sm text-center font-medium">
+            {{ $page['form']['success'] }}
+        </div>
+        <div id="form-error" class="hidden mt-6 bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg text-sm text-center font-medium">
+            {{ $page['form']['error'] }}
+        </div>
+      </div>
+
       <!-- Footer -->
       <footer class="mt-8 text-center pb-32">
         <div class="footer-nav mb-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
@@ -296,5 +344,54 @@
       <p class="text-xs font-medium text-white shadow-sm" style="text-shadow: 0 1px 2px rgba(0,0,0,0.8);">Join {{ $page['name'] }} today</p>
     </div>
 
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('kyc-form');
+        const successMsg = document.getElementById('form-success');
+        const errorMsg = document.getElementById('form-error');
+        const submitBtn = document.getElementById('submit-btn');
+
+        if(form) {
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+            
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = '...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            fetch('{{ route('leads.store') }}', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => {
+              if(!response.ok) throw new Error('Network response was not ok');
+              return response.json();
+            })
+            .then(data => {
+              form.reset();
+              successMsg.classList.remove('hidden');
+            })
+            .catch(error => {
+              errorMsg.classList.remove('hidden');
+            })
+            .finally(() => {
+              submitBtn.innerText = originalBtnText;
+              submitBtn.disabled = false;
+            });
+          });
+        }
+      });
+    </script>
   </body>
 </html>

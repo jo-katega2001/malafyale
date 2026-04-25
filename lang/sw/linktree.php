@@ -48,4 +48,19 @@ return [
             ]
         ]
     ],
+    'form' => [
+        'title' => 'NINAWASAIDIA VIJANA NA WAFANYAKAZI KUTENGENEZA KIPATO CHA ZIADA KUPITIA MITANDAO YA KIJAMII',
+        'description' => "Jina langu ni Mr Paul Mwaikenda, mimi ni Mjasiriamali kwenye sekta ya afya na ustawi. NINASAIDIA na KUFUNDISHA Vijana kuanzisha Biashara na kutengeneza pesa kupitia mitandao ya kijamii. Jaza fomu hapa chini na nitakupigia simu kukupa maelezo zaidi.",
+        'fields' => [
+            'name' => 'Jina lako ni nani?',
+            'occupation' => 'Unafanya kazi gani?',
+            'location' => 'Unatokea wapi?',
+            'phone' => 'Namba yako ya simu au WhatsApp',
+            'instagram' => "Jina lako la Instagram",
+        ],
+        'clear' => 'Futa fomu',
+        'submit' => 'TUMA ✓',
+        'success' => 'Asante! Taarifa zako zimepokelewa. Nitakupigia simu hivi punde.',
+        'error' => 'Kumetokea hitilafu. Tafadhali hakikisha umejaza taarifa zote na ujaribu tena.',
+    ],
 ];

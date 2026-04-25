@@ -48,4 +48,19 @@ return [
             ]
         ]
     ],
+    'form' => [
+        'title' => 'I HELP YOUTH AND EMPLOYEES TO MAKE EXTRA INCOME USING SOCIAL MEDIA PLATFORMS',
+        'description' => "My name is Mr Paul Mwaikenda , I'm an Entrepreneur based in wellness sector. I SUPPORT and COACH Youths to start Business and make money using social media platforms. Fill the form below I will give you a quick call for more information.",
+        'fields' => [
+            'name' => 'What is your name?',
+            'occupation' => 'What do you do for a living?',
+            'location' => 'Where are you from?',
+            'phone' => 'Your number or WhatsApp',
+            'instagram' => "What's your Instagram username",
+        ],
+        'clear' => 'Clear form',
+        'submit' => 'SUBMIT ✓',
+        'success' => 'Thank you! Your information has been received. I will give you a quick call soon.',
+        'error' => 'There was an error submitting your form. Please check the fields and try again.',
+    ],
 ];
